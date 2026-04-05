@@ -34,18 +34,17 @@
             background-attachment: fixed;
         }
 
-        /* AJUSTE DE TRANSPARÊNCIA: Opacidade em 0.3 e blur reduzido para mostrar mais o fundo */
         .lore-box {
-            background: rgba(0, 0, 0, 0.3); 
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.45); 
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 40px;
             max-width: 1100px;
             width: 85%;
             max-height: 85vh; 
             overflow-y: auto;
             border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
             scrollbar-width: thin;
             scrollbar-color: #eaff00 transparent;
         }
@@ -56,18 +55,17 @@
             padding-bottom: 15px;
         }
 
-        h1 { font-family: 'SplatoonFont', sans-serif; font-size: 2.8rem; color: #eaff00; margin: 0; text-shadow: 3px 3px 8px #000; }
-        h2 { font-family: 'SplatoonFont', sans-serif; font-size: 1.8rem; color: #00f2ff; margin: 25px 0 15px 0; text-shadow: 2px 2px 5px #000; }
-        h3 { font-family: 'SplatoonFont', sans-serif; font-size: 1.4rem; color: #ff0077; margin-top: 20px; text-shadow: 2px 2px 5px #000; }
+        h1 { font-family: 'SplatoonFont', sans-serif; font-size: 2.8rem; color: #eaff00; margin: 0; text-shadow: 3px 3px 10px #000; }
+        h2 { font-family: 'SplatoonFont', sans-serif; font-size: 1.8rem; color: #00f2ff; margin: 25px 0 15px 0; }
+        h3 { font-family: 'SplatoonFont', sans-serif; font-size: 1.4rem; color: #ff0077; margin-top: 20px; }
 
         p { 
-            font-size: 1.15rem; 
+            font-size: 1.1rem; 
             line-height: 1.8; 
             text-align: justify; 
             color: #ffffff; 
             margin-bottom: 20px;
-            /* Sombra no texto para garantir leitura em fundos claros */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+            text-shadow: 1px 1px 2px #000;
         }
 
         b { color: #eaff00; }
@@ -92,7 +90,7 @@
             bottom: 20px;
             right: 20px;
             z-index: 10000;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #eaff00;
             border-radius: 40px;
             padding: 12px 25px;
@@ -119,7 +117,7 @@
 
         .disclaimer-text { max-width: 800px; margin: 0 auto; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); }
 
-        /* BORDAS COLORIDAS */
+        /* BORDAS DAS SEÇÕES */
         .border-s1 { border-left: 15px solid #00bcd4; }
         .border-s2 { border-left: 15px solid #ff0077; }
         .border-octo { border-left: 15px solid #00f2ff; }
@@ -127,9 +125,6 @@
         .border-city { border-left: 15px solid #fff; }
 
         .tag-role { display: inline-block; padding: 6px 15px; font-family: 'SplatoonFont', sans-serif; font-size: 0.9rem; border-radius: 5px; color: #fff; margin-bottom: 10px; }
-
-        .lore-box::-webkit-scrollbar { width: 8px; }
-        .lore-box::-webkit-scrollbar-thumb { background: #eaff00; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -147,18 +142,20 @@
     <section style="background-image: url('squidsisters.png');">
         <div class="lore-box border-s1">
             <div class="header-area">
-                <h1>Prólogo: A Extinção Humana</h1>
+                <h1>Prólogo: O Fim da Humanidade</h1>
             </div>
-            <p>Há 12.000 anos, o aquecimento global descontrolado elevou o nível dos oceanos, submergindo os continentes. Em um esforço desesperado, a humanidade tentou se refugiar em <b>Alterna</b>, um domo subterrâneo gigante. No entanto, um acidente catastrófico matou os últimos humanos. Seus corpos foram convertidos em cristais líquidos que carregavam sentimentos e memórias, "contaminando" a vida marinha e acelerando a evolução de lulas e polvos para formas humanoides com desejo de criatividade e competição.</p>
+            <p>Há 12.000 anos, a Terra enfrentou sua última crise. O aquecimento global descontrolado derreteu as calotas polares, elevando o nível dos oceanos a pontos irreversíveis. Em um esforço desesperado, grupos de humanos tentaram se refugiar em <b>Alterna</b>, um complexo subterrâneo construído dentro de um domo geológico. No entanto, um acidente catastrófico matou os últimos humanos, e seus corpos, carregados de sentimentos e memórias, foram convertidos em cristais líquidos que caíram no mar.</p>
+            <p>Esses cristais "contaminaram" a vida marinha, acelerando a evolução das lulas e polvos, que agora possuíam o desejo humano de criatividade e competição. Assim nasceu a <b>Era Mollusc</b>.</p>
             
-            <h2>A Grande Guerra Turf</h2>
-            <p>Milênios depois, a escassez de terra firme causou a <b>Grande Guerra Turf</b>. Os Octarians possuíam tecnologia militar superior e quase venceram com seus <i>Octoweapons</i> colossais. No entanto, eles perderam por um detalhe bizarro: as máquinas eram tão potentes que a fiação elétrica não suportou e uma tomada principal foi desconectada acidentalmente. Os Inklings, liderados pelo <b>Capitão Cuttlefish</b>, aproveitaram a brecha e baniram os polvos para os domos subterrâneos de Octo Valley.</p>
+            <h2>A Grande Guerra Turf (Great Turf War)</h2>
+            <p>Milênios depois, a escassez de terra firme causou o maior conflito da história. Os <b>Octarians</b> possuíam uma tecnologia militar superior, utilizando robôs gigantes chamados <i>Octoweapons</i>. Eles quase conquistaram tudo, mas os Inklings tinham uma vantagem: eram mais rápidos em suas formas de lula e possuíam o lendário <b>Capitão Cuttlefish</b>.</p>
+            <p>A guerra foi decidida por um detalhe bizarro: os Octoweapons eram tão potentes que a fiação elétrica não aguentou e uma tomada principal foi desconectada acidentalmente, imobilizando o exército de polvos. Os Inklings aproveitaram e baniram os Octarians para os domos subterrâneos de Octo Valley, onde eles vivem sob racionamento de energia.</p>
             
             <div class="char-layout">
                 <div class="char-info">
-                    <div class="tag-role" style="background: #ff0077;">Agent 1 & 2</div>
+                    <div class="tag-role" style="background: #ff0077;">As Defensoras de Inkopolis</div>
                     <h3>The Squid Sisters (Callie & Marie)</h3>
-                    <p>No primeiro jogo, o <b>DJ Octavio</b> rouba o <i>Great Zapfish</i> para religar seus domos. Ele é contido pelo Agente 3 e pela música "Calamari Inkantation", que ressoa tão forte que quebra seu controle sobre as tropas e o prende em um globo de neve.</p>
+                    <p>No primeiro jogo, o <b>DJ Octavio</b> rouba o <i>Great Zapfish</i> para religar os domos de seu povo. Ele hipnotiza as criaturas marinhas para servirem ao seu exército. Marie recruta o <b>Agente 3</b> para invadir o subsolo. O conflito termina com o concerto "Calamari Inkantation", que ressoa tão forte que quebra o controle de Octavio e o prende em um globo de neve.</p>
                 </div>
                 <div class="char-img"><img src="callie.png" alt="Callie e Marie"></div>
             </div>
@@ -168,15 +165,16 @@
     <section style="background-image: url('offthehook.png');">
         <div class="lore-box border-s2">
             <div class="header-area">
-                <h1>Splatoon 2: O Sequestro de Callie</h1>
+                <h1>Splatoon 2: Sombras na Square</h1>
             </div>
-            <p>Anos depois, <b>Callie desaparece</b> misteriosamente. Descobre-se que o DJ Octavio escapou e usou os <i>Hypnoshades</i> para lavar o cérebro dela, transformando-a em sua General. Marie recruta o <b>Agente 4</b> para invadir o Octo Canyon. No clímax, Marie utiliza um tiro de tinta carregado com a melodia das lulas para libertar Callie da hipnose durante o show final.</p>
+            <p>Anos após a derrota de Octavio, a paz em Inkopolis Square é interrompida. <b>Callie desaparece</b> sem deixar rastros. Marie, agora disfarçada, recruta o <b>Agente 4</b> (você). Descobre-se que o DJ Octavio escapou de sua prisão e usou os <i>Hypnoshades</i> para lavar o cérebro de Callie, tornando-a sua General.</p>
+            <p>Enquanto o Agente 4 luta para recuperar os Zapfish em Octo Canyon, Callie atua como o boss final ao lado de Octavio. Marie utiliza um tiro de tinta carregado com a melodia das lulas para libertar sua prima da hipnose no meio de um concerto sônico voador.</p>
             
             <div class="char-layout">
                 <div class="char-info">
-                    <div class="tag-role" style="background: #ff00ea;">As Vozes da Square</div>
+                    <div class="tag-role" style="background: #ff00ea;">A Nova Geração</div>
                     <h3>Off the Hook (Pearl & Marina)</h3>
-                    <p>Marina é uma ex-elite Octariana que desertou após ser tocada pela música das Squid Sisters. Junto com Pearl, elas fundaram o grupo Off the Hook e se tornam essenciais na <b>Octo Expansion</b>, ajudando o Agente 8 a escapar do extermínio planejado pelo Comandante Tartar.</p>
+                    <p>Marina é uma ex-elite Octariana que desertou após ouvir a música das Squid Sisters. Ela é uma gênia tecnológica e, junto com a rapper Pearl, fundou o grupo Off the Hook. Elas se tornam fundamentais na <b>Octo Expansion</b>, onde ajudam um Octoling desertor (Agente 8) a escapar do extermínio sônico planejado pelo Comandante Tartar.</p>
                 </div>
                 <div class="char-img"><img src="offthehook_profile.png" alt="Off the Hook"></div>
             </div>
@@ -186,26 +184,37 @@
     <section style="background-image: url('agent8.png');">
         <div class="lore-box border-octo">
             <div class="header-area">
-                <h1>Octo Expansion: O Plano de Tartar</h1>
+                <h1>Octo Expansion: O Experimento Genocida</h1>
             </div>
-            <p>O <b>Agent 8</b> acorda no Deepsea Metro e é guiado pelo <b>Comandante Tartar</b>, uma IA criada por um cientista humano há 12.000 anos para preservar o conhecimento. Tartar enlouqueceu ao ver que as novas espécies eram "fúteis" e decidiu resetar o mundo.</p>
-            <p>Ele criou a <b>Sanitização</b> — um processo que remove o livre arbítrio e a alma dos polvos. Seu plano era triturar seres marinhos talentosos em uma pasta genética para alimentar o canhão <i>NILS Statue</i> e destruir Inkopolis. Com a ajuda do grito sônico de Pearl, Tartar é destruído, salvando a era Mollusc do extermínio total.</p>
+            <p>O <b>Agent 8</b> acorda no Deepsea Metro sem memórias. Ele é guiado por um telefone falante chamado <b>Comandante Tartar</b>, que promete levá-lo à "Terra Prometida". Tartar é, na verdade, uma inteligência artificial criada por um cientista humano há 12.000 anos para preservar o conhecimento da humanidade.</p>
+            <p>O plano de Tartar é sombrio: ele percebeu que as novas espécies marinhas eram tão "fúteis" quanto os humanos e decidiu resetar o mundo. Ele criou o processo de <b>Sanitização</b> — que remove o livre arbítrio e a individualidade dos polvos, transformando-os em robôs biológicos verdes.</p>
+            <p>O "telefone" pretendia triturar o Agente 8 em uma pasta genética para alimentar um canhão solar gigante (o NILS Statue) e destruir Inkopolis. Com a ajuda de Pearl e seu grito sônico destruidor, Tartar é pulverizado, salvando milhões de vidas.</p>
+            
+            <div class="char-layout">
+                <div class="char-info">
+                    <div class="tag-role" style="background: #00ff66; color: #000;">Vilão Ancestral</div>
+                    <h3>Comandante Tartar</h3>
+                    <p>Tartar representa o medo humano de ser substituído por algo "inferior". Ele via a cultura e a moda das lulas como lixo e tentou impor uma ordem perfeita através do extermínio total.</p>
+                </div>
+                <div class="char-img"><img src="tartar.png" alt="Commander Tartar"></div>
+            </div>
         </div>
     </section>
 
     <section style="background-image: url('deepcut.png');">
         <div class="lore-box border-s3">
             <div class="header-area">
-                <h1>Splatoon 3: O Fantasma de Ark Polaris</h1>
+                <h1>Splatoon 3: O Mistério de Alterna</h1>
             </div>
-            <p>O <b>New Agent 3</b> investiga Alterna e descobre a substância <b>Fuzzy Ooze</b>, que transforma seres marinhos em mamíferos. O mentor é o <b>Mr. Grizz</b> (Urso #03), um urso pardo que sobreviveu à extinção na nave Ark Polaris. Após milênios no espaço, ele retornou e, consumido pelo luto pela extinção de sua espécie, decidiu usar os Golden Eggs para forçar o mundo a voltar à Era dos Pelos.</p>
-            <p>Pela primeira vez, o <b>DJ Octavio se une aos Inklings</b> para levar o Agente 3 ao espaço, onde eles derrotam o urso gigante antes que ele mude a biologia de todo o planeta.</p>
+            <p>Nas Splatlands, o <b>New Agent 3</b> descobre o abrigo original da humanidade: <b>Alterna</b>. O local foi tomado por uma substância chamada <b>Fuzzy Ooze</b> (Geleia Peluda), que transforma seres marinhos em mamíferos irracionais. O mentor é o <b>Mr. Grizz</b>, dono da Grizzco.</p>
+            <p><b>A História do Mr. Grizz:</b> Ele é o "Urso #03", um urso pardo que sobreviveu à extinção a bordo da nave espacial Ark Polaris. Após vagar pelo espaço por milênios, ele retornou à Terra e encontrou o planeta dominado por lulas. Consumido pelo luto, ele usou os Golden Eggs coletados por jogadores de Salmon Run para criar a Geleia Peluda e tentar forçar o mundo a voltar à Era dos Pelos.</p>
+            <p>No final épico, o <b>DJ Octavio</b> une forças com os Inklings, pilotando seu mecha para levar o Agente 3 até o espaço, onde eles derrotam o urso gigante antes que ele bombardreie o planeta.</p>
             
             <div class="char-layout">
                 <div class="char-info">
-                    <div class="tag-role" style="background: #ffcc00; color: #000;">Saqueadores de Alterna</div>
+                    <div class="tag-role" style="background: #ffcc00; color: #000;">Os Novos Ídolos</div>
                     <h3>Deep Cut</h3>
-                    <p>Shiver, Frye e Big Man protegem a cultura das Splatlands e auxiliam o Agente 3 no ataque final contra a base de Mr. Grizz.</p>
+                    <p>Shiver, Frye e Big Man são saqueadores benevolentes de Alterna. Eles descendem de linhagens antigas que guardavam os tesouros humanos. Shiver controla tubarões e Frye controla enguias, representando a força selvagem do deserto.</p>
                 </div>
                 <div class="char-img"><img src="deepcut_profile.png" alt="Deep Cut"></div>
             </div>
@@ -215,18 +224,22 @@
     <section style="background-image: url('inkopolis.png');">
         <div class="lore-box border-city">
             <div class="header-area">
-                <h1>Enciclopédia: Biologia e Sociedade</h1>
+                <h1>Sociedade, Biologia e Personagens</h1>
             </div>
-            <p><b>Anatomia:</b> Inklings e Octolings não têm ossos, permitindo que se tornem tinta líquida. A água é letal devido à explosão osmótica em suas membranas instáveis. A cultura é regida pela <b>Freshness</b>, uma canalização da agressividade guerreira para competições esportivas.</p>
-            <p><b>Judd & Li'l Judd:</b> Judd é um gato de 12.000 anos preservado em criogenia. Li'l Judd é seu clone ressentido que secretamente assumiu a Grizzco.</p>
-            <p><b>Sheldon:</b> O mestre de armas que recicla lixo humano em tecnologia militar. Os <b>Jellyfish</b> (Águas-vivas) possuem mente coletiva e mantêm a infraestrutura urbana funcionando.</p>
+            <p><b>Anatomia Cefalópode:</b> Inklings e Octolings possuem uma fisiologia única. Eles não possuem ossos, permitindo que se comprimam em formas líquidas de tinta. Seus corpos são controlados por um bico central resistente. A água é letal porque suas membranas celulares são muito finas e instáveis; o contato com grandes massas de água causa uma explosão osmótica que dissolve o indivíduo instantaneamente.</p>
+            
+            <h2>Os Pilares de Inkopolis</h2>
+            <p><b>Judd & Li'l Judd:</b> Judd é um gato de 12.000 anos que foi colocado em criogenia por seu dono cientista (o criador de Tartar) antes da inundação. Li'l Judd é um clone criado pela máquina de criogenia, mas ele sente que é apenas uma "sombra" do Judd original, o que o levou a assumir o controle da Grizzco após a derrota de Mr. Grizz.</p>
+            <p><b>Sheldon:</b> O dono da Ammo Knights. Sua família foi essencial na Grande Guerra Turf, projetando armas baseadas em registros humanos. Sheldon é obcecado por história militar e vê o Turf War moderno como uma preservação cultural das técnicas de guerra.</p>
+            <p><b>Jellyfish (Águas-vivas):</b> Eles formam a classe trabalhadora. Diferente dos Inklings, eles possuem uma mente coletiva. Eles não participam de guerras por território, preferindo manter a infraestrutura das cidades, as lojas de roupas e as usinas elétricas funcionando silenciosamente.</p>
         </div>
     </section>
 
     <footer>
         <div class="disclaimer-text">
-            <strong>SPLATARCHIVES: THE UNOFFICIAL BIBLE (2026)</strong><br><br>
-            Splatoon™ e todos os ativos são marcas registradas da Nintendo Co., Ltd.
+            <strong>SPLATARCHIVES: THE UNOFFICIAL BIBLE (2026 EDITION)</strong><br><br>
+            Este repositório é dedicado à preservação da história cefalópode. Splatoon™ e todos os ativos são marcas registradas da <b>Nintendo Co., Ltd</b>.<br>
+            Projeto desenvolvido por Artur para fins de arquivo de lore e demonstração de web design.
         </div>
     </footer>
 
