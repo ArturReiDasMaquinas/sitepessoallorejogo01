@@ -1,0 +1,1 @@
+O SplatArchives é um site estático desenvolvido para catalogar a rica cronologia e biologia da franquia Splatoon. O projeto foca em uma experiência imersiva, utilizando elementos visuais e sonoros que remetem ao universo do jogo.
