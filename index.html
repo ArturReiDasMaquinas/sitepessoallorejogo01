@@ -34,124 +34,121 @@
             background-attachment: fixed;
         }
 
+        /* AJUSTE: Caixa mais transparente e compacta */
         .lore-box {
-            background: rgba(0, 0, 0, 0.8); 
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 45px;
-            max-width: 1100px;
-            width: 85%;
-            max-height: 85vh; 
+            background: rgba(0, 0, 0, 0.45); /* Mais transparente */
+            backdrop-filter: blur(25px);    /* Mais desfoque para legibilidade */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            max-width: 950px;               /* Um pouco mais estreita */
+            width: 80%;
+            max-height: 75vh;               /* Menor para não ocupar a tela toda */
             overflow-y: auto;
-            border-radius: 25px;
-            box-shadow: 0 25px 60px rgba(0,0,0,1);
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             scrollbar-width: thin;
             scrollbar-color: #eaff00 transparent;
         }
 
         .header-area {
-            border-bottom: 5px solid #eaff00;
-            margin-bottom: 35px;
-            padding-bottom: 15px;
+            border-bottom: 3px solid #eaff00;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
         }
 
-        h1 { font-family: 'SplatoonFont', sans-serif; font-size: 3rem; color: #eaff00; margin: 0; text-shadow: 2px 2px 10px #000; letter-spacing: 2px; }
-        h3 { font-family: 'SplatoonFont', sans-serif; font-size: 1.8rem; color: #00f2ff; margin: 20px 0 10px 0; }
+        h1 { font-family: 'SplatoonFont', sans-serif; font-size: 2.5rem; color: #eaff00; margin: 0; text-shadow: 2px 2px 5px #000; }
+        h3 { font-family: 'SplatoonFont', sans-serif; font-size: 1.5rem; color: #00f2ff; margin-top: 20px; }
 
         p { 
-            font-size: 1.15rem; 
-            line-height: 1.9; 
+            font-size: 1.05rem; 
+            line-height: 1.7; 
             text-align: justify; 
             color: #ffffff; 
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         b { color: #eaff00; }
-        i { color: #00f2ff; font-style: normal; font-weight: bold; }
 
         .char-layout {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
+            grid-template-columns: 1fr 220px; /* Foto menor para economizar espaço */
+            gap: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
             border-radius: 20px;
-            margin-top: 45px;
-            border: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
         }
 
-        .char-img { border: 6px solid #fff; box-shadow: 12px 12px 0px rgba(0,0,0,0.8); }
-        .char-img img { width: 100%; height: auto; display: block; }
+        .char-img { border: 4px solid #fff; box-shadow: 8px 8px 0px rgba(0,0,0,0.5); }
+        .char-img img { width: 100%; display: block; }
 
+        /* PLAYER COMPACTO */
         #music-player {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             z-index: 10000;
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid #eaff00;
-            border-radius: 35px;
-            padding: 15px 25px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #eaff00;
+            border-radius: 40px;
+            padding: 10px 20px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(15px);
+            gap: 15px;
+            backdrop-filter: blur(10px);
         }
 
-        .music-label { font-family: 'SplatoonFont', sans-serif; color: #eaff00; font-size: 0.75rem; }
-        .controls { display: flex; gap: 12px; align-items: center; }
+        .music-label { font-family: 'SplatoonFont', sans-serif; color: #eaff00; font-size: 0.65rem; }
+        .controls { display: flex; gap: 8px; }
 
         #play-btn, .nav-btn {
             background: #eaff00; border: none; border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
         }
-        #play-btn { width: 40px; height: 40px; font-weight: bold; }
-        .nav-btn { width: 30px; height: 30px; }
+        #play-btn { width: 30px; height: 30px; }
+        .nav-btn { width: 22px; height: 22px; font-size: 0.7rem; }
 
         footer {
-            background: #000; padding: 100px 20px; text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1); position: relative;
+            background: #000; padding: 60px 20px; text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .disclaimer-text { max-width: 900px; margin: 0 auto; font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+        .disclaimer-text { font-size: 0.8rem; color: rgba(255,255,255,0.4); max-width: 700px; margin: 0 auto; }
 
-        .border-s1 { border-left: 15px solid #00bcd4; }
-        .border-s2 { border-left: 15px solid #ff0077; }
-        .border-octo { border-left: 15px solid #00f2ff; }
-        .border-s3 { border-left: 15px solid #eaff00; }
-        .border-city { border-left: 15px solid #fff; }
+        /* CORES LATERAIS */
+        .border-s1 { border-left: 10px solid #00bcd4; }
+        .border-s2 { border-left: 10px solid #ff0077; }
+        .border-octo { border-left: 10px solid #00f2ff; }
+        .border-s3 { border-left: 10px solid #eaff00; }
+        .border-city { border-left: 10px solid #fff; }
 
-        .tag-role { display: inline-block; padding: 8px 18px; font-family: 'SplatoonFont', sans-serif; font-size: 0.9rem; border-radius: 6px; color: #fff; margin-bottom: 10px; }
-
-        .lore-box::-webkit-scrollbar { width: 8px; }
-        .lore-box::-webkit-scrollbar-thumb { background: #eaff00; border-radius: 10px; }
+        .tag-role { display: inline-block; padding: 5px 12px; font-family: 'SplatoonFont', sans-serif; font-size: 0.8rem; border-radius: 4px; color: #fff; margin-bottom: 8px; }
     </style>
 </head>
 <body>
 
     <div id="music-player">
-        <span class="music-label" id="track-name">TRACK: 1/8</span>
-        <audio id="bgm" loop><source id="audio-source" src="song.mp3" type="audio/mpeg"></audio>
         <div class="controls">
             <button class="nav-btn" onclick="changeTrack(-1)">«</button>
             <button id="play-btn" onclick="toggleMusic()">▶</button>
             <button class="nav-btn" onclick="changeTrack(1)">»</button>
         </div>
+        <span class="music-label" id="track-name">01/08</span>
+        <audio id="bgm" loop><source id="audio-source" src="song.mp3" type="audio/mpeg"></audio>
     </div>
 
     <section style="background-image: url('squidsisters.png');">
         <div class="lore-box border-s1">
             <div class="header-area">
-                <h1>O Fim da Humanidade e a Grande Guerra</h1>
+                <h1>A Gênese e as Turf Wars</h1>
             </div>
-            <p>Há 12.000 anos, o egoísmo humano e o aquecimento global selaram o destino da nossa espécie. O derretimento total das calotas polares submergiu os continentes, extinguindo os mamíferos (com exceção de <i>Judd</i> e <i>Mr. Grizz</i>). O que restou da consciência humana foi preservado em <b>Alterna</b>, onde cristais líquidos feitos de sentimentos e memórias residuais caíram no oceano, acelerando a evolução das lulas e polvos para formas humanoides.</p>
-            <p>Com a escassez de terra firme, a convivência pacífica entre espécies acabou na <b>Grande Guerra Turf</b> (Great Turf War). Os Octarians, liderados por um jovem DJ Octavio, possuíam tecnologia superior e quase venceram com seus <i>Octoweapons</i> colossais. No entanto, um erro estúpido — uma tomada de energia que foi desconectada acidentalmente — imobilizou as máquinas de guerra. Os Inklings, liderados pelo <b>Capitão Cuttlefish</b>, aproveitaram a brecha e baniram os polvos para os domos subterrâneos, onde eles vivem em exílio até hoje.</p>
+            <p>Há 12.000 anos, o aquecimento global dizimou a <b>humanidade</b>. Com o derretimento das calotas polares, os continentes afundaram. O que sobrou da consciência humana foi filtrado em Alterna, onde cristais líquidos evoluíram lulas e polvos para formas humanoides.</p>
+            <p>A <b>Grande Guerra Turf</b> foi o conflito decisivo por terra firme. Os Octarians quase venceram com tecnologia superior, mas os Inklings, liderados pelo <b>Capitão Cuttlefish</b>, venceram por agilidade e um erro técnico nos robôs inimigos, banindo os polvos para o subsolo.</p>
             <div class="char-layout">
                 <div class="char-info">
-                    <div class="tag-role" style="background: #ff0077;">As Guardiãs da Paz</div>
+                    <div class="tag-role" style="background: #ff0077;">As Idols</div>
                     <h3>Callie & Marie</h3>
-                    <p>Netas de Cuttlefish, elas mantêm a vigilância sobre o Great Zapfish. No primeiro jogo, o DJ Octavio rouba a energia de Inkopolis para salvar seu povo da escuridão subterrânea, mas é contido pela melodia sagrada <i>Calamari Inkantation</i>, que desperta o espírito de liberdade nos corações cefalópodes.</p>
+                    <p>Agentes 1 e 2 do New Squidbeak Splatoon. Elas protegem o <b>Great Zapfish</b> (fonte de energia de Inkopolis) contra o <b>DJ Octavio</b>, que tenta roubá-lo para salvar seu povo no subsolo.</p>
                 </div>
                 <div class="char-img"><img src="callie.png" alt="Callie e Marie"></div>
             </div>
@@ -161,15 +158,14 @@
     <section style="background-image: url('offthehook.png');">
         <div class="lore-box border-s2">
             <div class="header-area">
-                <h1>Splatoon 2: A Traição Hipnótica</h1>
+                <h1>Splatoon 2: Lavagem Cerebral</h1>
             </div>
-            <p>A paz é abalada quando <b>Callie desaparece</b> misteriosamente de Inkopolis Plaza. Descobre-se que o DJ Octavio, em um ato de vingança, a sequestrou e usou os <i>Hypnoshades</i> — óculos de controle mental — para transformá-la em uma General Octariana. O <b>Agent 4</b> é recrutado por Marie para invadir o Octo Canyon e trazer sua prima de volta.</p>
-            <p>O resgate ocorre em um show épico onde Marie utiliza uma arma de tinta carregada com sentimentos puros para quebrar os óculos de Callie. Enquanto essa guerra secreta acontecia, a Inkopolis Square tornava-se o novo centro cultural, liderado pela dupla <b>Off the Hook</b>.</p>
+            <p>O <b>DJ Octavio sequestra Callie</b> e usa os <i>Hypnoshades</i> para controlar sua mente, transformando-a em vilã. Marie recruta o <b>Agent 4</b> para resgatá-la. A música é o que quebra o feitiço e une as primas novamente.</p>
             <div class="char-layout">
                 <div class="char-info">
-                    <div class="tag-role" style="background: #ff00ea;">As Rainhas da Square</div>
+                    <div class="tag-role" style="background: #ff00ea;">União de Raças</div>
                     <h3>Pearl & Marina</h3>
-                    <p>Marina é uma fugitiva de elite do exército Octariano. Ela era a engenheira responsável por armas de destruição, mas ao ouvir o concerto final das Squid Sisters, sua alma "abriu" e ela desertou para a superfície. Ao lado da rapper Pearl, ela usa sua genialidade técnica para o entretenimento, mas seu passado volta a assombrá-la no Deepsea Metro.</p>
+                    <p>Marina é uma ex-militar Octariana que desertou para a superfície. Junto com Pearl, elas formam o <b>Off the Hook</b>, provando que a música pode superar o ódio milenar entre espécies.</p>
                 </div>
                 <div class="char-img"><img src="offthehook_profile.png" alt="Off the Hook"></div>
             </div>
@@ -179,15 +175,14 @@
     <section style="background-image: url('agent8.png');">
         <div class="lore-box border-octo">
             <div class="header-area">
-                <h1>Octo Expansion: O Experimento Final</h1>
+                <h1>Octo Expansion: O Reset</h1>
             </div>
-            <p>O <b>Agent 8</b>, um Octoling sem memória, acorda no Deepsea Metro, uma instalação de testes sombria. Lá, ele é guiado pelo <b>Comandante Tartar</b>, uma inteligência artificial criada por um cientista humano há 12 milênios para passar o conhecimento adiante. No entanto, Tartar enlouqueceu ao ver que as novas espécies repetiam os mesmos erros de vaidade humana.</p>
-            <p><b>O Vilão Genocida:</b> Tartar planejava triturar todos os seres marinhos talentosos em uma "pasta" genética para criar uma vida artificialmente perfeita. Ele é o responsável pela <i>Sanitização</i>, que apaga a cor e a alma dos polvos. No fim, Pearl destrói Tartar com um grito sônico, provando que o caos da vida é superior à ordem da máquina.</p>
+            <p>O <b>Comandante Tartar</b> (uma IA humana) é o verdadeiro vilão aqui. Ele criou o processo de <b>Sanitização</b> para apagar a alma dos cefalópodes e transformá-los em "pasta" genética, tentando resetar a vida na Terra por considerar as novas espécies fúteis.</p>
             <div class="char-layout">
                 <div class="char-info">
-                    <div class="tag-role" style="background: #00ff66; color: #000;">IA do Antigo Mundo</div>
-                    <h3>Comandante Tartar</h3>
-                    <p>Ele representa o lado obscuro da ciência humana: a busca pela perfeição através do extermínio. Diferente de Octavio, Tartar não quer energia ou território, ele quer o "reset" total do planeta Terra.</p>
+                    <div class="tag-role" style="background: #00ff66; color: #000;">Inimigo Final</div>
+                    <h3>Agent 8 & Tartar</h3>
+                    <p>O Agent 8 luta para provar sua individualidade, enquanto Tartar tenta destruir Inkopolis com um canhão solar gigante.</p>
                 </div>
                 <div class="char-img"><img src="tartar.png" alt="Commander Tartar"></div>
             </div>
@@ -199,13 +194,12 @@
             <div class="header-area">
                 <h1>Splatoon 3: O Retorno dos Pelos</h1>
             </div>
-            <p>Nas Splatlands, o <b>New Agent 3</b> investiga o sumiço do Capitão Cuttlefish. O mentor por trás de tudo é <b>Mr. Grizz</b>, o dono da Grizzco. Grizz é um urso pardo que sobreviveu à extinção em animação suspensa e passou milênios coletando Golden Eggs dos Salmonids para combustível. Seu plano é cobrir o mundo com <b>Fuzzy Ooze</b> (Geleia Peluda), que reescreve o DNA marinho e o transforma em mamífero.</p>
-            <p>Pela primeira vez, vemos o <b>DJ Octavio se unir aos heróis</b> para impedir Grizz, mostrando que o destino do planeta está acima da guerra entre lulas e polvos. O trio <b>Deep Cut</b> (Shiver, Frye e Big Man) também entra na luta como os novos protetores da cultura do Caos.</p>
+            <p>O <b>Mr. Grizz</b> (o urso da Grizzco) é o vilão supremo. Ele quer usar a <b>Geleia Peluda</b> para transformar tudo em mamífero. Pela primeira vez, <b>Octavio e Inklings se unem</b> para derrotar o urso no espaço e salvar a Era Mollusc.</p>
             <div class="char-layout">
                 <div class="char-info">
-                    <div class="tag-role" style="background: #ffcc00; color: #000;">O Trio das Sombras</div>
+                    <div class="tag-role" style="background: #ffcc00; color: #000;">Tribo do Caos</div>
                     <h3>Deep Cut</h3>
-                    <p>Diferente das outras idols, eles são saqueadores e protetores de Alterna. Shiver (mestra de tubarões), Frye (mestre de enguias) e Big Man provam que a lealdade e a tradição são fundamentais na cultura de Splatsville.</p>
+                    <p>Shiver, Frye e Big Man guardam os tesouros de Alterna e ajudam o <b>New Agent 3</b> a invadir o foguete de Grizz.</p>
                 </div>
                 <div class="char-img"><img src="deepcut_profile.png" alt="Deep Cut"></div>
             </div>
@@ -215,23 +209,18 @@
     <section style="background-image: url('inkopolis.png');">
         <div class="lore-box border-city">
             <div class="header-area">
-                <h1>A Sociedade e os Cidadãos de Inkopolis</h1>
+                <h1>Fatos: Cidadãos e Biologia</h1>
             </div>
-            <p>A cultura cefalópode é regida pelo conceito de <b>Freshness</b>. Não é apenas estética: é uma adaptação biológica onde a agressividade da guerra foi canalizada para competições de <i>Turf War</i>. Inklings e Octolings possuem corpos de tinta líquida, sem ossos e com um bico central. Eles se dissolvem na água porque o excesso de líquido rompe suas membranas instáveis.</p>
-            
-            <h3>Personagens Essenciais:</h3>
-            <p><b>Sheldon:</b> O ferreiro de armas da Ammo Knights. Sua família foi a responsável pela engenharia Inkling na Grande Guerra. Ele não luta, mas estuda armas humanas ancestrais (como furadeiras e mangueiras) para criar o arsenal dos Agentes.</p>
-            <p><b>Crusty Sean:</b> Um camarão frito que vende lanches para aumentar o metabolismo de tinta. Ele representa a evolução culinária: seu "casaco" frito é, na verdade, uma crosta nutritiva que o mantém ágil.</p>
-            <p><b>Os Jellyfish (Águas-vivas):</b> Eles são a base da economia. Diferente de Inklings, eles têm uma mente coletiva e não participam de Turf Wars. Eles operam as lojas e a infraestrutura das cidades, sendo os verdadeiros mantenedores da ordem social.</p>
-            <p><b>Judd & Li'l Judd:</b> O gato Judd foi congelado criogenicamente pelo seu dono humano (o mesmo que criou Tartar). Ele acorda a cada milênio para julgar batalhas. Li'l Judd é um clone criado pela máquina de criogenia, mas secretamente guarda um profundo rancor de seu "pai" biológico por ser o favorito.</p>
+            <p><b>Biologia:</b> Inklings e Octolings não têm ossos; seus corpos são feitos de tinta e se dissolvem na água. O conceito de <i>Freshness</i> (Estilo) é o que define o status social e a força militar.</p>
+            <p><b>Judd & Li'l Judd:</b> O gato original foi congelado criogenicamente pelos humanos. Li'l Judd é seu clone ressentido que planeja tomar o controle da Grizzco.</p>
+            <p><b>Sheldon:</b> O mestre de armas que adapta lixo humano em tecnologia de ponta. Os <b>Jellyfish</b> (Águas-vivas) são a força de trabalho silenciosa que mantém as cidades funcionando.</p>
         </div>
     </section>
 
     <footer>
         <div class="disclaimer-text">
-            <strong>SPLATARCHIVES: THE UNOFFICIAL BIBLE (FAN PROJECT)</strong><br><br>
-            Este arquivo contém a história completa do fim da humanidade até a ascensão do Caos. Splatoon™ e todos os ativos são propriedade da <b>Nintendo Co., Ltd</b>.<br>
-            Desenvolvido por fãs para preservação de lore e estudos técnicos.
+            <strong>SPLATARCHIVES: THE UNOFFICIAL BIBLE</strong><br>
+            Splatoon™ é propriedade da Nintendo Co., Ltd. Este site é um projeto de fã focado em preservação de lore e design.
         </div>
     </footer>
 
@@ -256,7 +245,7 @@
             const wasPlaying = !audio.paused;
             source.src = playlist[currentTrack];
             audio.load();
-            label.innerHTML = `TRACK: ${currentTrack + 1}/8`;
+            label.innerHTML = `${String(currentTrack + 1).padStart(2, '0')}/08`;
             if (wasPlaying) { audio.play(); btn.innerHTML = "||"; }
         }
 
