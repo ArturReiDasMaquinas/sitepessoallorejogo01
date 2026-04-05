@@ -2,7 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>SplatArchives | Lore Master Edition</title>
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self';">
+    
+    <title>SplatArchives</title>
     <style>
         @font-face {
             font-family: 'SplatoonFont';
@@ -298,6 +300,11 @@
     </section>
 
     <script>
+        // SCRIPT DE SEGURANÇA (FRAME BREAKER)
+        if (top !== self) {
+            top.location = self.location;
+        }
+
         const playlist = ["song.mp3", "song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song6.mp3", "song7.mp3"];
         let currentTrack = 0;
         const audio = document.getElementById('bgm');
