@@ -1,3 +1,1 @@
-Aviso Legal (Disclaimer): Este é um projeto de fã sem fins lucrativos desenvolvido para fins de estudo e demonstração de habilidades em desenvolvimento web. Splatoon e todas as propriedades relacionadas são marcas registradas da Nintendo. Este projeto não possui afiliação oficial com a empresa.
-
-O SplatArchives é um site estático desenvolvido para catalogar a rica cronologia e biologia da franquia Splatoon. O projeto foca em uma experiência imersiva, utilizando elementos visuais e sonoros que remetem ao universo do jogo.
+Aviso Legal (Disclaimer): Este é um projeto de fã sem fins lucrativos. Todas as imagens, personagens, músicas e fontes citadas ou utilizadas são propriedades intelectuais da Nintendo Co., Ltd. Este projeto não possui afiliação oficial com a empresa e foi criado apenas para demonstração técnica e compartilhamento de informações com amigos e familiares.
