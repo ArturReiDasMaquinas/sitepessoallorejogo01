@@ -12,51 +12,45 @@
 
         body, html {
             margin: 0; padding: 0;
-            background-color: #000;
-            color: #fff;
+            background-color: #000; color: #fff;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            scroll-snap-type: y mandatory;
-            overflow-x: hidden;
+            scroll-snap-type: y mandatory; overflow-x: hidden;
         }
 
         section {
             width: 100vw; height: 100vh;
-            position: relative;
-            display: flex; align-items: center; justify-content: center;
-            scroll-snap-align: start;
-            background-size: cover; background-position: center; background-attachment: fixed;
+            position: relative; display: flex; align-items: center; justify-content: center;
+            scroll-snap-align: start; background-size: cover; background-position: center; background-attachment: fixed;
         }
 
         .lore-box {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 40px;
-            max-width: 1100px; width: 85%;
+            padding: 40px; max-width: 1200px; width: 90%;
             max-height: 85vh; overflow-y: auto;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            scrollbar-width: thin; scrollbar-color: #eaff00 transparent;
         }
 
         .header-area { border-bottom: 4px solid #eaff00; margin-bottom: 30px; padding-bottom: 15px; }
         h1 { font-family: 'SplatoonFont', sans-serif; font-size: 2.8rem; color: #eaff00; margin: 0; text-shadow: 3px 3px 8px #000; }
-        h2, h3 { font-family: 'SplatoonFont', sans-serif; color: #eaff00; margin-top: 30px; }
+        h2 { font-family: 'SplatoonFont', sans-serif; color: #eaff00; margin-top: 35px; font-size: 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; }
+        h3 { font-family: 'SplatoonFont', sans-serif; color: #00f2ff; margin-top: 25px; }
         p { font-size: 1.15rem; line-height: 1.8; text-align: justify; margin-bottom: 20px; text-shadow: 2px 2px 4px #000; }
         b { color: #eaff00; }
-        i { color: #00f2ff; font-style: normal; }
+        i { color: #ff0077; font-style: normal; }
 
         /* PAINEL DE ÁUDIO */
         #audio-dashboard {
             position: fixed; top: 20px; right: 20px; z-index: 9999;
-            background: rgba(0, 0, 0, 0.8); border: 2px solid #eaff00;
-            border-radius: 20px; padding: 15px; width: 220px;
+            background: rgba(0, 0, 0, 0.85); border: 2px solid #eaff00;
+            border-radius: 20px; padding: 15px; width: 250px;
             font-family: 'SplatoonFont', sans-serif; color: #eaff00;
         }
-        select { background: #000; color: #eaff00; border: 1px solid #eaff00; width: 100%; padding: 5px; margin-top: 10px; }
+        select { background: #000; color: #eaff00; border: 1px solid #eaff00; width: 100%; padding: 5px; margin-top: 10px; font-family: sans-serif; }
         .mode-btn { background: #222; border: 1px solid #eaff00; color: #eaff00; cursor: pointer; font-size: 0.7rem; padding: 5px; width: 48%; }
         .active { background: #eaff00; color: #000; }
 
-        /* Bordas Coloridas */
         .border-s1 { border-left: 15px solid #00bcd4; }
         .border-s2 { border-left: 15px solid #ff0077; }
         .border-octo { border-left: 15px solid #00f2ff; }
@@ -66,57 +60,77 @@
 <body>
 
     <div id="audio-dashboard">
-        <div style="font-size: 0.7rem; text-align: center; border-bottom: 1px solid #eaff00; margin-bottom: 10px;">AUDIO CONTROL</div>
+        <div style="font-size: 0.8rem; text-align: center; border-bottom: 1px solid #eaff00; margin-bottom: 10px; padding-bottom: 5px;">AUDIO SYSTEM</div>
         <div style="display: flex; justify-content: space-between;">
-            <button id="btn-auto" class="mode-btn active" onclick="setMode('auto')">AUTO</button>
+            <button id="btn-auto" class="mode-btn active" onclick="setMode('auto')">AUTO (JOGO)</button>
             <button id="btn-manual" class="mode-btn" onclick="setMode('manual')">MANUAL</button>
         </div>
         <select id="track-selector" onchange="manualPlay()">
-            <option value="song.mp3">Track 01 - Prologue</option>
-            <option value="song1.mp3">Track 02 - Squid Sisters</option>
-            <option value="song2.mp3">Track 03 - Splat 2</option>
-            <option value="song3.mp3">Track 04 - Octo Expansion</option>
+            <option value="song.mp3">Track 01 - The Apocalypse</option>
+            <option value="song1.mp3">Track 02 - Era Mollusc</option>
+            <option value="song2.mp3">Track 03 - Splatoon 1/2</option>
+            <option value="song3.mp3">Track 04 - Octo Valley</option>
             <option value="song4.mp3">Track 05 - Deepsea Metro</option>
             <option value="song5.mp3">Track 06 - Off The Hook</option>
-            <option value="song6.mp3">Track 07 - Ebb & Flow</option>
+            <option value="song6.mp3">Track 07 - Sanitized</option>
             <option value="song7.mp3">Track 08 - Deep Cut</option>
         </select>
-        <div id="track-info" style="font-size: 0.6rem; margin-top: 10px; text-align: center;">AGUARDANDO CLIQUE...</div>
+        <div id="track-info" style="font-size: 0.65rem; margin-top: 10px; text-align: center; color: #fff;">AGUARDANDO INTERAÇÃO...</div>
     </div>
 
     <audio id="main-audio" loop></audio>
 
     <section data-audio="song.mp3" style="background-image: url('squidsisters.png');">
         <div class="lore-box border-s1">
-            <div class="header-area"><h1>O Fim e o Novo Começo</h1></div>
-            <p>Há 12.000 anos, a humanidade foi dizimada pela 5ª Guerra Mundial e pelo aquecimento global. Os últimos humanos buscaram refúgio em <b>Alterna</b>, um domo subterrâneo. Cientistas criaram <b>Cristais Líquidos</b> a partir de fluidos de lulas para projetar o céu. Quando o foguete de escape falhou, o domo colapsou e os cristais caíram no oceano.</p>
-            <p>Esses cristais eram "bio-memória": continham os sentimentos e o desejo de liberdade dos humanos. A vida marinha absorveu isso, acelerando a evolução. Os Inklings não apenas parecem humanos; eles herdaram nossa alma criativa e competitiva.</p>
-            <h2>O "Deus" Fax</h2>
-            <p>Os Splatfests são decididos por um <b>Fax Divino</b>. Na verdade, são sinais de rádio humanos de 12.000 anos atrás que viajaram pelo espaço, ricochetearam em corpos celestes e voltaram à Terra agora. Os Inklings interpretam esses registros antigos (como "Pão vs. Arroz") como mensagens sagradas.</p>
+            <div class="header-area"><h1>O Fim Absoluto: Da WW5 a Alterna</h1></div>
+            <p>Splatoon se passa no nosso mundo real, mas em um futuro distante onde a humanidade não existe mais. A extinção não foi causada pela Segunda Guerra Mundial, mas sim pela <b>5ª Guerra Mundial</b>. Durante este conflito, por razões desconhecidas, uma bomba nuclear massiva (muito maior do que as atuais) foi lançada diretamente no Polo Sul. O calor gerado por essa explosão derreteu completamente as calotas polares, resultando no aumento catastrófico do nível do mar que inundou quase toda a superfície do planeta.</p>
+            
+            <p>Os humanos tentaram reagir. Eles cavaram profundamente no subsolo, criando estruturas gigantescas em forma de domo para servirem como seu novo habitat. O principal e último refúgio foi chamado de <b>Alterna</b>. Quando chegou a hora de nomear os líderes dessa nova sociedade, os cientistas foram escolhidos, pois a humanidade acreditava que apenas eles poderiam encontrar uma maneira de retornar à superfície.</p>
+            
+            <h2>A Tragédia dos Cristais Líquidos</h2>
+            <p>Em Alterna, um cientista descobriu como refinar <b>Cristais Líquidos</b> a partir dos fluidos corporais de lulas. Essa tecnologia futurista tinha uma propriedade bizarra: ela projetava na sua estrutura física os desejos e pensamentos da humanidade. Como todos ali dentro desejavam desesperadamente a liberdade, as paredes do domo foram forradas com esses cristais produzidos em massa, projetando eternamente uma imagem de um céu azul artificial.</p>
+            <p>Mas a geração seguinte não teve paciência. Eles construíram um foguete gigantesco na esperança de forçar um retorno à superfície. Durante o primeiro teste de lançamento, a energia dos propulsores foi tão massiva que sobrecarregou o revestimento de cristais do domo. Isso causou um desabamento catastrófico. Quase todos em Alterna foram esmagados instantaneamente. Os poucos sobreviventes logo morreram de inanição sem sua fonte de alimentos. <b>A humanidade estava oficialmente extinta.</b></p>
+            
+            <h2>O Nascimento da Era Mollusc e o Fax Divino</h2>
+            <p>Os cristais líquidos choveram sobre as águas de Alterna. Eles ainda estavam imbuídos com os últimos resquícios de emoções humanas e poluíram a vida marinha local. Isso acelerou brutalmente o processo evolutivo. Após 12.000 anos, as lulas e polvos evoluíram para os Inklings e Octolings — herdando o nosso desejo de escapar do subsolo, nossa cultura, nossa moda e nossa música.</p>
+            <p>Curiosamente, a cultura dos Splatfests tem uma origem sombria e hilária: uma velha máquina de fax humana. Conhecida como <b>Kamisama</b> (um jogo de palavras em japonês onde <i>Kami</i> significa tanto Deus quanto Papel, e <i>Sama</i> é um honorífico). Esta máquina recebe sinais de rádio com debates humanos fúteis (como "Arroz vs. Pão") enviados há 12.000 anos, que viajaram pelo espaço, ricochetearam em outros planetas e agora voltam à Terra para serem impressos. Os Inklings interpretam esses faxes aleatórios como a palavra literal de Deus.</p>
         </div>
     </section>
 
     <section data-audio="song2.mp3" style="background-image: url('offthehook.png');">
         <div class="lore-box border-s2">
-            <div class="header-area"><h1>Splatoon 2: Sombras e Idols</h1></div>
-            <p>Anos após a derrota inicial de DJ Octavio, o <b>Great Zapfish</b> some novamente. Callie desaparece e Marie descobre que sua prima foi hipnotizada pelos <i>Hypnoshades</i> de Octavio, tornando-se uma General inimiga.</p>
-            <p>Aqui vemos o poder da música: a "Calamari Inkantation" é a única frequência capaz de quebrar o controle mental. Marina, uma ex-engenheira de elite Octariana, desertou do exército após ouvir essa música, unindo-se à Pearl para formar o <b>Off the Hook</b>.</p>
+            <div class="header-area"><h1>A Grande Guerra Turf e o Exílio Octariano</h1></div>
+            <p>As novas espécies conseguiram retornar à superfície pelos mesmos túneis que os humanos usaram para se esconder. No início, Inklings e Octolings conviviam pacificamente. No entanto, o nível do mar voltou a subir inexoravelmente, engolindo as poucas porções de terra firme restantes. Isso acendeu o estopim da <b>Grande Guerra Turf</b> (The Great Turf War).</p>
+            <p>No início, os Octolings estavam destruindo as forças das lulas, graças ao seu armamento pesado e robôs gigantes (as Octoweapons). Mas os Inklings voltaram com força total. Embora o jogo não mostre os detalhes gráficos, a lore implica que os Inklings usaram "métodos insanos" e armamento ao nível de bombas nucleares para virar o jogo (já que a Convenção de Genebra morreu com a humanidade). Comandados pelo <b>Capitão Cuttlefish</b>, os Inklings venceram quando, num detalhe ridículo, as máquinas de guerra inimigas consumiram tanta energia que desconectaram a tomada principal do exército polvo.</p>
+
+            <h2>Splatoon 1 e 2: A Vingança de DJ Octavio</h2>
+            <p>Os Octolings foram banidos para os túmulos da humanidade — os mesmos domos escuros que os humanos construíram e morreram dentro. Lá, usando sucata de tecnologia humana, eles construíram sua sociedade conectada por <i>Kettles</i> (chaleiras de viagem). Enquanto os Inklings festejavam na superfície, o <b>DJ Octavio</b> planejou a vingança. Ele rouba repetidamente o <i>Great Zapfish</i> para religar seus domos mortos.</p>
+            <p>Em Splatoon 2, a lore fica mais sombria: Octavio consegue escapar de sua prisão no globo de neve e usa a tecnologia dos <i>Hypnoshades</i> para lavar o cérebro de Callie (Agente 1), transformando-a em sua General. Marie recruta o Agente 4 para recuperá-la. A influência da música é tão forte na biologia cefalópode que apenas o refrão da "Calamari Inkantation" é capaz de quebrar essa hipnose militar e libertar Callie.</p>
         </div>
     </section>
 
-    <section data-audio="song4.mp3" style="background-image: url('agent8.png');">
+    <section data-audio="song5.mp3" style="background-image: url('agent8.png');">
         <div class="lore-box border-octo">
-            <div class="header-area"><h1>Octo Expansion: O Extermínio</h1></div>
-            <p>No Deepsea Metro, o <b>Comandante Tartar</b> revela sua face sombria. Ele é uma IA criada por um cientista humano para passar o conhecimento à próxima espécie. Ao ver os Inklings focados em moda e batalhas "fúteis", ele decidiu resetar o mundo.</p>
-            <p><b>O Processo de Sanitização:</b> Tartar tritura Octolings vivos para criar uma pasta de DNA. O <b>Agente 8</b> é o espécime número <b>10.008</b>, indicando que mais de dez mil outros foram mortos tentando alcançar a "Terra Prometida". A sanitização remove o livre arbítrio, transformando-os em cascas vazias e obedientes.</p>
+            <div class="header-area"><h1>Octo Expansion: O Liquidificador de Tartar</h1></div>
+            <p>Toda a franquia muda de tom quando encontramos o <b>Comandante Tartar</b> no Deepsea Metro. Tartar é, bizarramente, um telefone que beira a senciência. Ele foi criado por um cientista humano formidável há 12.000 anos, projetado para ser um banco de dados tutorial para passar a história, a arte e o conhecimento humano para a próxima espécie promissora que surgisse.</p>
+            <p>Ele esperou por 12 milênios. Quando finalmente viu vida inteligente (os Inklings e Octolings), ficou inicialmente esperançoso. Mas ao observar a superfície, Tartar sentiu puro desgosto. Ele viu as criaturas obcecadas por moda, consumismo superficial e travando guerras raciais violentas pelas mínimas diferenças. Para o telefone, eles eram um desperdício. Ele abandonou sua diretriz de guiar a sociedade e decidiu assumir o controle total através de um genocídio seletivo.</p>
+
+            <h2>Sanitização e o Número 10.008</h2>
+            <p>Tartar atraiu Octolings perdidos no subsolo com uma mentira cruel: ele prometia levá-los à "Terra Prometida" (a superfície). Para provar seu valor, eles deveriam passar por testes insanos e juntar os componentes mecânicos que formariam o portal. Porém, o portal era, na verdade, um <b>Liquidificador Gigante</b>.</p>
+            <p>As vítimas entravam e um leito giratório de lâminas descia lentamente, triturando-os vivos até formarem uma pasta orgânica. Dessa lama genética, Tartar criava a "Tinta Misturada". Ele a usava para <b>Sanitizar</b> outras cobaias. A Sanitização lobotomiza a vítima, drenando toda a energia vital, apagando as memórias e o senso de si mesmo. O indivíduo se torna um zumbi verde neon que obedece cegamente a Tartar.</p>
+            <p>Quando você joga como o <b>Agente 8</b>, esse não é seu nome real. Você é simplesmente a cobaia número <b>10.008</b>. Isso significa que, antes de você conseguir destruir o liquidificador com a ajuda de Pearl e Marina (<i>Off the Hook</i>), o Comandante Tartar torturou, matou e triturou mais de 10.000 pessoas no subsolo de Inkopolis.</p>
+            <h3>O Trágico Caso de Dead Fish</h3>
+            <p>Nem todas as vítimas foram pegas à força. O jogo revela a existência de <b>Dead Fish</b>, uma artista Octoling brilhante que produzia música. Sob imensa pressão da indústria e bloqueio criativo, ela encontrou o processo de sanitização e se submeteu a ele *voluntariamente*. Ela sacrificou sua alma, emoções e memórias apenas para parar de sofrer e focar unicamente em fazer batidas perfeitas e robóticas para a eternidade. Ela é a compositora de todas as músicas que tocam nas fases da DLC.</p>
         </div>
     </section>
 
     <section data-audio="song7.mp3" style="background-image: url('deepcut.png');">
         <div class="lore-box border-s3">
-            <div class="header-area"><h1>Splatoon 3: O Retorno dos Mamíferos</h1></div>
-            <p>O <b>Mr. Grizz</b> é o Urso #03, um sobrevivente real da <b>Ark Polaris</b>. Ele ficou vagando no espaço por milênios e, ao voltar, encontrou o planeta dominado por seres marinhos. Consumido pelo luto, ele usa os Golden Eggs para criar a <i>Fuzzy Ooze</i> (Geleia Peluda).</p>
-            <p>Seu plano era transformar toda a vida marinha de volta em mamíferos, mesmo que isso custasse a consciência de todos. Ele representa o último vestígio do egoísmo humano tentando retomar um mundo que já não lhe pertence.</p>
+            <div class="header-area"><h1>Splatoon 3: O Pesadelo Pós-Humano</h1></div>
+            <p>Nas Splatlands, a verdadeira escala do desespero ecológico é revelada através do vilão <b>Mr. Grizz</b>. Embora pareça apenas o dono corrupto e corporativo da Grizzco (uma metáfora bizarra para o trabalho escravo em Salmon Run), ele é, na verdade, uma relíquia trágica. Ele é o <b>Urso #03</b>, um mamífero que estava a bordo da espaçonave <i>Ark Polaris</i>, uma tentativa final de salvar as espécies terrestres da inundação da Terra.</p>
+            <p>A nave vagou pelo espaço profundo e congelado por milênios antes de colidir de volta na Terra. Quando Mr. Grizz acordou do sono criogênico, ele encontrou seu planeta natal completamente coberto por oceanos e governado por lulas coloridas. Sendo o último e absoluto único mamífero de seu tipo no universo, ele foi consumido pelo luto e pela solidão.</p>
+            <p>Ele fundou a Grizzco não por dinheiro, mas para usar crianças Inklings e Octolings para roubar os <i>Golden Eggs</i> dos Salmonídeos. Com essa energia formidável, ele financiou a pesquisa da <b>Fuzzy Ooze</b> (Geleia Peluda). Seu objetivo final não era governar as lulas, mas aniquilá-las. Ele queria usar um foguete espacial gigante coberto de Fuzzy Ooze para explodir na atmosfera e forçar toda a vida marinha do planeta a sofrer uma mutação biológica que os devolveria à "Era dos Pelos", ressuscitando os mamíferos sobre os cadáveres liquefeitos da sociedade cefalópode.</p>
+            <p>No clímax cósmico, o Agente 3, aliado ao grupo <b>Deep Cut</b> e montado no mecha do próprio DJ Octavio, precisa lutar contra esse urso gigante no espaço sideral para proteger o direito de existir da vida marinha, colocando um fim final na herança sombria da humanidade.</p>
         </div>
     </section>
 
@@ -133,7 +147,7 @@
             document.getElementById('btn-manual').classList.toggle('active', mode === 'manual');
             if(mode === 'auto') {
                 currentTrack = ""; 
-                info.innerText = "MODO: AUTOMÁTICO";
+                info.innerText = "MODO AUTO (ROLANDO A PÁGINA)";
             }
         }
 
@@ -142,7 +156,7 @@
                 const track = selector.value;
                 audio.src = track;
                 audio.play();
-                info.innerText = "TOCANDO: " + track;
+                info.innerText = "TOCANDO MANUAL: " + track;
             }
         }
 
@@ -154,13 +168,13 @@
                     if (track && track !== currentTrack) {
                         currentTrack = track;
                         audio.src = track;
-                        audio.play().catch(() => { info.innerText = "CLIQUE NA TELA"; });
+                        audio.play().catch(() => { info.innerText = "CLIQUE EM QUALQUER LUGAR PARA OUVIR"; });
                         info.innerText = "AUTO PLAY: " + track;
-                        selector.value = track; // Sincroniza o seletor visualmente
+                        selector.value = track; 
                     }
                 }
             });
-        }, { threshold: 0.6 });
+        }, { threshold: 0.5 });
 
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
