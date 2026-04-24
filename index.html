@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SplatArchives | The Full Lore</title>
+    <title>SplatArchives | The Unofficial Bible</title>
     <style>
         @font-face {
             font-family: 'SplatoonFont';
@@ -13,45 +13,47 @@
         body, html {
             margin: 0; padding: 0;
             background-color: #000; color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             scroll-snap-type: y mandatory; overflow-x: hidden;
         }
 
+        /* Configuração das Seções com Imagens de Fundo */
         section {
             width: 100vw; height: 100vh;
             position: relative; display: flex; align-items: center; justify-content: center;
-            scroll-snap-align: start; background-size: cover; background-position: center; background-attachment: fixed;
+            scroll-snap-align: start;
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; /* Efeito Parallax */
+            transition: background 0.5s ease-in-out;
         }
 
         .lore-box {
-            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px; max-width: 1200px; width: 90%;
-            max-height: 85vh; overflow-y: auto; border-radius: 35px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 45px; max-width: 1100px; width: 85%;
+            max-height: 80vh; overflow-y: auto; border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
         }
 
-        .header-area { border-bottom: 5px solid #eaff00; margin-bottom: 30px; padding-bottom: 15px; }
-        h1 { font-family: 'SplatoonFont', sans-serif; font-size: 3rem; color: #eaff00; margin: 0; text-shadow: 3px 3px 10px #000; }
-        h2 { font-family: 'SplatoonFont', sans-serif; color: #00f2ff; margin-top: 40px; font-size: 2rem; border-bottom: 1px solid rgba(255,255,255,0.2); }
-        p { font-size: 1.2rem; line-height: 1.9; text-align: justify; margin-bottom: 25px; }
+        .header-area { border-bottom: 5px solid #eaff00; margin-bottom: 25px; padding-bottom: 15px; }
+        h1 { font-family: 'SplatoonFont', sans-serif; font-size: 2.8rem; color: #eaff00; margin: 0; }
+        h2 { font-family: 'SplatoonFont', sans-serif; color: #00f2ff; margin-top: 35px; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        p { font-size: 1.15rem; line-height: 1.8; text-align: justify; margin-bottom: 20px; }
         b { color: #eaff00; }
-        i { color: #ff0077; font-style: normal; }
 
-        /* PAINEL DE ÁUDIO */
-        #audio-dashboard {
+        /* Indicador de Áudio (Apenas informativo, sem botões) */
+        #audio-status {
             position: fixed; top: 20px; right: 20px; z-index: 9999;
-            background: rgba(0, 0, 0, 0.9); border: 2px solid #eaff00;
-            border-radius: 20px; padding: 15px; width: 260px;
+            background: rgba(0, 0, 0, 0.8); border: 2px solid #eaff00;
+            border-radius: 15px; padding: 10px 20px;
             font-family: 'SplatoonFont', sans-serif; color: #eaff00;
-            box-shadow: 0 0 20px rgba(234, 255, 0, 0.3);
+            font-size: 0.7rem; pointer-events: none; /* Bloqueia clique */
         }
-        select { background: #111; color: #eaff00; border: 1px solid #eaff00; width: 100%; padding: 8px; margin-top: 10px; border-radius: 5px; }
-        .mode-btn { background: #333; border: 1px solid #eaff00; color: #eaff00; cursor: pointer; font-size: 0.75rem; padding: 8px; width: 48%; transition: 0.3s; }
-        .active { background: #eaff00; color: #000; }
 
-        /* Cores das Bordas */
+        /* Cores de destaque por jogo */
         .border-s1 { border-left: 15px solid #00bcd4; }
+        .border-s2 { border-left: 15px solid #ff0077; }
         .border-octo { border-left: 15px solid #00f2ff; }
         .border-s3 { border-left: 15px solid #eaff00; }
         .border-order { border-left: 15px solid #ffffff; }
@@ -59,113 +61,78 @@
 </head>
 <body>
 
-    <div id="audio-dashboard">
-        <div style="font-size: 0.8rem; text-align: center; margin-bottom: 10px; letter-spacing: 2px;">SPLAT-OS AUDIO</div>
-        <div style="display: flex; justify-content: space-between;">
-            <button id="btn-auto" class="mode-btn active" onclick="setMode('auto')">AUTO</button>
-            <button id="btn-manual" class="mode-btn" onclick="setMode('manual')">MANUAL</button>
-        </div>
-        <select id="track-selector" onchange="manualPlay()">
-            <option value="song.mp3">Track 01 - The Great Flood</option>
-            <option value="song1.mp3">Track 02 - Squid Sisters Era</option>
-            <option value="song2.mp3">Track 03 - Inkopolis Square</option>
-            <option value="song3.mp3">Track 04 - Octo Canyon</option>
-            <option value="song4.mp3">Track 05 - Deepsea Metro</option>
-            <option value="song5.mp3">Track 06 - Off The Hook Live</option>
-            <option value="song6.mp3">Track 07 - Tartar's Legacy</option>
-            <option value="song7.mp3">Track 08 - Anarchy Splatcast</option>
-        </select>
-        <div id="track-info" style="font-size: 0.65rem; margin-top: 10px; text-align: center; color: #fff;">SISTEMA ONLINE</div>
-    </div>
+    <div id="audio-status">SINTONIZANDO ÁUDIO...</div>
 
     <audio id="main-audio" loop></audio>
 
-    <section data-audio="song.mp3" style="background-image: url('fundo1.png');">
+    <section data-audio="song.mp3" style="background-image: url('fundo_apocalipse.png');">
         <div class="lore-box border-s1">
-            <div class="header-area"><h1>Capítulo I: O Apocalipse Humano</h1></div>
-            <p>Há 12.000 anos, a Terra como conhecemos deixou de existir. A ganância e os conflitos culminaram na <b>5ª Guerra Mundial</b>. Um ataque nuclear devastador atingiu o Polo Sul, derretendo instantaneamente as calotas polares. O nível do mar subiu centenas de metros, afogando as cidades. A humanidade, desesperada, construiu <b>Alterna</b>, um santuário subterrâneo. Mas a tragédia os seguiu: cientistas tentaram lançar um foguete para o espaço, mas a energia térmica sobrecarregou as paredes de cristais líquidos do domo, causando um colapso que esmagou a última civilização humana.</p>
-            <p>Os <b>Cristais Líquidos</b> caíram na água. Eles não eram apenas minerais; eram receptáculos de <i>bio-memória</i> que guardavam todos os sentimentos humanos: o amor pela moda, a paixão pela música e a natureza competitiva. As lulas que nadavam naquelas águas absorveram esse DNA emocional, evoluindo para os Inklings. Toda a cultura deles é um eco dos nossos últimos desejos.</p>
+            <div class="header-area"><h1>O Fim Absoluto: Da WW5 a Alterna</h1></div>
+            <p>Há 12.000 anos, a humanidade foi extinta pela <b>5ª Guerra Mundial</b>. Uma bomba nuclear no Polo Sul derreteu as calotas, inundando o planeta. Os humanos restantes fugiram para <b>Alterna</b>, um domo subterrâneo. A tragédia final ocorreu quando um teste de foguete colapsou o domo, esmagando os últimos humanos. Os <b>Cristais Líquidos</b> das paredes, que guardavam a memória emocional da nossa espécie, caíram no oceano e aceleraram a evolução das lulas, dando origem aos Inklings.</p>
+            <h2>O Fax Divino</h2>
+            <p>A cultura dos Inklings é guiada por um fax que recebe sinais de rádio de 12.000 anos atrás que ricochetearam no espaço. Eles interpretam esses sinais humanos antigos como mensagens sagradas para os seus Splatfests.</p>
         </div>
     </section>
 
-    <section data-audio="song1.mp3" style="background-image: url('fundo2.png');">
+    <section data-audio="song1.mp3" style="background-image: url('fundo_splat1.png');">
         <div class="lore-box border-s1">
-            <div class="header-area"><h1>Capítulo II: Lulas vs. Polvos</h1></div>
-            <p>Após a evolução, Inklings e Octolings viviam em paz até que o espaço em terra firme ficou escasso. Começou a <b>Grande Guerra Turf</b>. Liderados pelo Capitão Cuttlefish, os Inklings quase perderam para a superioridade tecnológica dos Octariano. No entanto, um detalhe salvou as lulas: as armas gigantes dos Octolings consumiam tanta energia que o plugue principal da bateria foi desconectado acidentalmente.</p>
-            <p>Os Octolings foram banidos para os domos escuros abaixo da terra. Lá, eles sofrem até hoje com a falta de energia, roubando o <b>Great Zapfish</b> periodicamente para sobreviver. As <i>Squid Sisters</i> (Callie e Marie) usam sua música não apenas para entreter, mas como uma ferramenta política e de combate — a <i>Calamari Inkantation</i> é, tecnicamente, uma frequência que desperta a liberdade no DNA cefalópode.</p>
+            <div class="header-area"><h1>A Grande Guerra Turf</h1></div>
+            <p>Inklings e Octolings lutaram pela pouca terra firme que restou. Os Octolings quase venceram com sua tecnologia superior, mas perderam porque a bateria de suas máquinas foi desconectada por acidente. Banidos para o subsolo, eles vivem em domos que morrem sem energia, enquanto as <b>Squid Sisters</b> mantêm a paz na superfície com a música Calamari Inkantation.</p>
         </div>
     </section>
 
-    <section data-audio="song6.mp3" style="background-image: url('fundo3.png');">
+    <section data-audio="song6.mp3" style="background-image: url('fundo_tartar.png');">
         <div class="lore-box border-octo">
-            <div class="header-area"><h1>Capítulo III: O Protocolo de Limpeza</h1></div>
-            <p>No Deepsea Metro, descobrimos a verdade sombria sobre o <b>Comandante Tartar</b>. Ele é uma IA criada por um professor humano para guiar a próxima espécie. Ao observar a futilidade dos Inklings, ele decidiu que eles eram "falhas" e que o mundo precisava ser resetado.</p>
-            <p>O plano de Tartar era cruel: ele atraía Octolings com a promessa da "Terra Prometida" e os triturava em um <b>liquidificador gigante</b> para criar a pasta de DNA perfeita. O Agente 8 é o <b>10.008º indivíduo</b> a ser testado. Milhares de jovens foram mortos e "Sanitizados" — transformados em zumbis sem alma e sem memória. A artista <i>Dead Fish</i> (Acht) sacrificou sua própria mente nesse processo para continuar produzindo batidas perfeitas para o metrô.</p>
+            <div class="header-area"><h1>O Liquidificador de Tartar</h1></div>
+            <p>O <b>Comandante Tartar</b> é uma IA humana que enlouqueceu após 12.000 anos de espera. Ele considera os Inklings uma falha biológica. No Deepsea Metro, ele tritura milhares de Octolings em um liquidificador para criar uma pasta de DNA e "sanitizar" o mundo. O Agente 8 é o espécime <b>10.008</b>, sobrevivente de um genocídio que já matou mais de dez mil jovens no subsolo.</p>
         </div>
     </section>
 
-    <section data-audio="song7.mp3" style="background-image: url('fundo4.png');">
+    <section data-audio="song7.mp3" style="background-image: url('fundo_splat3.png');">
         <div class="lore-box border-s3">
-            <div class="header-area"><h1>Capítulo IV: O Luto de Mr. Grizz</h1></div>
-            <p>Em Splatoon 3, o inimigo final é o <b>Mr. Grizz</b> (Urso #03). Ele sobreviveu ao desastre da nave <i>Ark Polaris</i> no espaço e voltou à Terra milênios depois, descobrindo que era o último de sua espécie. Consumido pela dor, ele usou a Grizzco para coletar Golden Eggs e criar a <b>Fuzzy Ooze</b>.</p>
-            <p>Seu objetivo era cobrir o mundo com essa geleia peluda, transformando Inklings em mamíferos à força. Ele não queria apenas poder; ele queria que o mundo voltasse a ser como era antes, mesmo que isso significasse a morte de todos os seres marinhos. A batalha final no espaço é o confronto definitivo entre o passado morto da humanidade e o futuro vibrante das lulas.</p>
+            <div class="header-area"><h1>O Luto do Mr. Grizz</h1></div>
+            <p>O <b>Mr. Grizz</b> é o Urso #03 da nave Ark Polaris. Ele voltou do espaço profundo e encontrou um mundo sem humanos. Consumido pela solidão, ele tenta usar a <i>Fuzzy Ooze</i> para transformar toda a vida marinha de volta em mamíferos, tentando ressuscitar o passado sobre o cadáver da civilização Inkling.</p>
         </div>
     </section>
 
-    <section data-audio="song5.mp3" style="background-image: url('fundo5.png');">
+    <section data-audio="song5.mp3" style="background-image: url('fundo_order.png');">
         <div class="lore-box border-order">
-            <div class="header-area"><h1>Capítulo V: Side Order e o Mundo sem Cor</h1></div>
-            <p>A história se encerra na <b>Spire of Order</b>. Marina tentou criar um mundo virtual (o Memverse) para ajudar os Octolings sanitizados a recuperarem suas memórias. No entanto, uma entidade chamada <b>Order</b> (ou Smollusk) tomou o controle. O objetivo da Ordem é a estagnação absoluta: um mundo onde nada muda, onde não existe cor, caos ou livre arbítrio — apenas uma perfeição cinza e infinita.</p>
-            <p>Nesta jornada, o Agente 8, acompanhado por Pearl (em forma de drone) e Acht, precisa subir a torre para salvar a consciência de Marina. A Side Order mostra que o maior perigo para esse novo mundo não é apenas a extinção, mas a perda da individualidade. Ao derrotar a Ordem, os Inklings provam que o Caos — a mudança constante — é o que define a vida.</p>
+            <div class="header-area"><h1>Side Order: A Estagnação</h1></div>
+            <p>Na Spire of Order, a entidade <b>Ordem</b> tenta criar um mundo sem cor, sem caos e sem mudanças. Marina criou o Memverse para salvar os sanitizados, mas quase foi consumida pela busca da perfeição. O Agente 8 e Pearl provam que o Caos é o que mantém a vida vibrante e que o passado humano deve ser lembrado, mas não deve escravizar o futuro.</p>
         </div>
     </section>
 
     <script>
         const audio = document.getElementById('main-audio');
-        const info = document.getElementById('track-info');
-        const selector = document.getElementById('track-selector');
-        let audioMode = 'auto';
+        const status = document.getElementById('audio-status');
         let currentTrack = "";
 
-        function setMode(mode) {
-            audioMode = mode;
-            document.getElementById('btn-auto').classList.toggle('active', mode === 'auto');
-            document.getElementById('btn-manual').classList.toggle('active', mode === 'manual');
-            if(mode === 'auto') {
-                currentTrack = ""; 
-                info.innerText = "MODO: AUTOMÁTICO";
-            }
-        }
-
-        function manualPlay() {
-            if (audioMode === 'manual') {
-                const track = selector.value;
-                audio.src = track;
-                audio.play();
-                info.innerText = "TOCANDO MANUAL: " + track;
-            }
-        }
-
+        // Sistema de Observação de Rolagem (Troca a música sozinho)
         const observer = new IntersectionObserver((entries) => {
-            if (audioMode !== 'auto') return;
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const track = entry.target.getAttribute('data-audio');
                     if (track && track !== currentTrack) {
                         currentTrack = track;
                         audio.src = track;
-                        audio.play().catch(() => { info.innerText = "CLIQUE PARA INICIAR ÁUDIO"; });
-                        info.innerText = "SINTONIZANDO: " + track;
-                        selector.value = track; 
+                        audio.play().then(() => {
+                            status.innerText = "TOCANDO: " + track.toUpperCase();
+                        }).catch(() => {
+                            status.innerText = "CLIQUE NA TELA PARA SOM";
+                        });
                     }
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.6 });
 
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
+        // Ativa o som no primeiro clique do usuário (exigência dos navegadores)
         window.addEventListener('click', () => {
-            if (audio.paused) { audio.play().catch(e => {}); }
+            if (audio.paused && audio.src) { 
+                audio.play(); 
+                status.innerText = "SISTEMA DE ÁUDIO ATIVO";
+            }
         }, { once: true });
     </script>
 </body>
