@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SplatArchives | The Unofficial Bible</title>
     <style>
-        /* [Seus estilos base de fonte e body permanecem os mesmos] */
         @font-face {
             font-family: 'SplatoonFont';
             src: url('SplatoonFont.otf') format('opentype');
@@ -15,7 +14,7 @@
             margin: 0; padding: 0;
             background-color: #000;
             color: #fff;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             scroll-snap-type: y mandatory;
             overflow-x: hidden;
         }
@@ -29,51 +28,35 @@
         }
 
         .lore-box {
-            background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 40px; max-width: 1100px; width: 85%;
-            max-height: 85vh; overflow-y: auto; border-radius: 30px;
+            padding: 40px;
+            max-width: 1100px; width: 85%;
+            max-height: 85vh; overflow-y: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* --- NOVO PAINEL DE ÁUDIO --- */
+        .header-area { border-bottom: 4px solid #eaff00; margin-bottom: 30px; padding-bottom: 15px; }
+        h1 { font-family: 'SplatoonFont', sans-serif; font-size: 2.8rem; color: #eaff00; margin: 0; text-shadow: 3px 3px 8px #000; }
+        h2, h3 { font-family: 'SplatoonFont', sans-serif; color: #eaff00; margin-top: 30px; }
+        p { font-size: 1.15rem; line-height: 1.8; text-align: justify; margin-bottom: 20px; text-shadow: 2px 2px 4px #000; }
+        b { color: #eaff00; }
+        i { color: #00f2ff; font-style: normal; }
+
+        /* PAINEL DE ÁUDIO */
         #audio-dashboard {
-            position: fixed;
-            top: 20px; right: 20px;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.85);
-            border: 2px solid #eaff00;
-            border-radius: 20px;
-            padding: 15px;
-            width: 250px;
-            font-family: 'SplatoonFont', sans-serif;
-            color: #eaff00;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: fixed; top: 20px; right: 20px; z-index: 9999;
+            background: rgba(0, 0, 0, 0.8); border: 2px solid #eaff00;
+            border-radius: 20px; padding: 15px; width: 220px;
+            font-family: 'SplatoonFont', sans-serif; color: #eaff00;
         }
+        select { background: #000; color: #eaff00; border: 1px solid #eaff00; width: 100%; padding: 5px; margin-top: 10px; }
+        .mode-btn { background: #222; border: 1px solid #eaff00; color: #eaff00; cursor: pointer; font-size: 0.7rem; padding: 5px; width: 48%; }
+        .active { background: #eaff00; color: #000; }
 
-        .audio-title { font-size: 0.8rem; margin-bottom: 10px; text-align: center; border-bottom: 1px solid #eaff00; padding-bottom: 5px; }
-        
-        .mode-switch {
-            display: flex; justify-content: space-around; margin-bottom: 15px;
-        }
-
-        .mode-btn {
-            background: #222; border: 1px solid #eaff00; color: #eaff00;
-            padding: 5px 10px; cursor: pointer; font-size: 0.7rem; border-radius: 5px;
-        }
-
-        .mode-btn.active { background: #eaff00; color: #000; }
-
-        .jukebox-controls { display: none; flex-direction: column; gap: 10px; }
-        .jukebox-controls.show { display: flex; }
-
-        select {
-            background: #000; color: #eaff00; border: 1px solid #eaff00;
-            padding: 5px; border-radius: 5px; font-family: sans-serif;
-        }
-
-        #track-info { font-size: 0.65rem; margin-top: 10px; color: #fff; text-align: center; }
-
-        /* Estilos das bordas das seções */
+        /* Bordas Coloridas */
         .border-s1 { border-left: 15px solid #00bcd4; }
         .border-s2 { border-left: 15px solid #ff0077; }
         .border-octo { border-left: 15px solid #00f2ff; }
@@ -83,104 +66,97 @@
 <body>
 
     <div id="audio-dashboard">
-        <div class="audio-title">SPLAT-AUDIO SYSTEM</div>
-        
-        <div class="mode-switch">
-            <button id="btn-auto" class="mode-btn active" onclick="setMode('auto')">AUTO (JOGO)</button>
+        <div style="font-size: 0.7rem; text-align: center; border-bottom: 1px solid #eaff00; margin-bottom: 10px;">AUDIO CONTROL</div>
+        <div style="display: flex; justify-content: space-between;">
+            <button id="btn-auto" class="mode-btn active" onclick="setMode('auto')">AUTO</button>
             <button id="btn-manual" class="mode-btn" onclick="setMode('manual')">MANUAL</button>
         </div>
-
-        <div id="jukebox" class="jukebox-controls">
-            <select id="track-selector" onchange="manualPlay()">
-                <option value="splat1.mp3">Splatoon 1 - Main Theme</option>
-                <option value="splat2.mp3">Splatoon 2 - Inkopolis</option>
-                <option value="splat2dlc.mp3">Octo Expansion - Metro</option>
-                <option value="splat3.mp3">Splatoon 3 - Anarchy</option>
-                <option value="splat3dlc.mp3">Side Order - Lore</option>
-            </select>
-        </div>
-
-        <div id="track-info">MODO: AUTOMÁTICO</div>
+        <select id="track-selector" onchange="manualPlay()">
+            <option value="song.mp3">Track 01 - Prologue</option>
+            <option value="song1.mp3">Track 02 - Squid Sisters</option>
+            <option value="song2.mp3">Track 03 - Splat 2</option>
+            <option value="song3.mp3">Track 04 - Octo Expansion</option>
+            <option value="song4.mp3">Track 05 - Deepsea Metro</option>
+            <option value="song5.mp3">Track 06 - Off The Hook</option>
+            <option value="song6.mp3">Track 07 - Ebb & Flow</option>
+            <option value="song7.mp3">Track 08 - Deep Cut</option>
+        </select>
+        <div id="track-info" style="font-size: 0.6rem; margin-top: 10px; text-align: center;">AGUARDANDO CLIQUE...</div>
     </div>
 
     <audio id="main-audio" loop></audio>
 
-    <section id="sec1" data-audio="splat1.mp3" style="background-image: url('squidsisters.png');">
+    <section data-audio="song.mp3" style="background-image: url('squidsisters.png');">
         <div class="lore-box border-s1">
-            <h1>Prólogo: O Legado</h1>
-            <p>Há 12.000 anos, o mundo mudou...</p>
+            <div class="header-area"><h1>O Fim e o Novo Começo</h1></div>
+            <p>Há 12.000 anos, a humanidade foi dizimada pela 5ª Guerra Mundial e pelo aquecimento global. Os últimos humanos buscaram refúgio em <b>Alterna</b>, um domo subterrâneo. Cientistas criaram <b>Cristais Líquidos</b> a partir de fluidos de lulas para projetar o céu. Quando o foguete de escape falhou, o domo colapsou e os cristais caíram no oceano.</p>
+            <p>Esses cristais eram "bio-memória": continham os sentimentos e o desejo de liberdade dos humanos. A vida marinha absorveu isso, acelerando a evolução. Os Inklings não apenas parecem humanos; eles herdaram nossa alma criativa e competitiva.</p>
+            <h2>O "Deus" Fax</h2>
+            <p>Os Splatfests são decididos por um <b>Fax Divino</b>. Na verdade, são sinais de rádio humanos de 12.000 anos atrás que viajaram pelo espaço, ricochetearam em corpos celestes e voltaram à Terra agora. Os Inklings interpretam esses registros antigos (como "Pão vs. Arroz") como mensagens sagradas.</p>
         </div>
     </section>
 
-    <section id="sec2" data-audio="splat2.mp3" style="background-image: url('offthehook.png');">
+    <section data-audio="song2.mp3" style="background-image: url('offthehook.png');">
         <div class="lore-box border-s2">
-            <h1>Splatoon 2: Sombras</h1>
-            <p>O retorno de Octavio e o desaparecimento de Callie.</p>
+            <div class="header-area"><h1>Splatoon 2: Sombras e Idols</h1></div>
+            <p>Anos após a derrota inicial de DJ Octavio, o <b>Great Zapfish</b> some novamente. Callie desaparece e Marie descobre que sua prima foi hipnotizada pelos <i>Hypnoshades</i> de Octavio, tornando-se uma General inimiga.</p>
+            <p>Aqui vemos o poder da música: a "Calamari Inkantation" é a única frequência capaz de quebrar o controle mental. Marina, uma ex-engenheira de elite Octariana, desertou do exército após ouvir essa música, unindo-se à Pearl para formar o <b>Off the Hook</b>.</p>
         </div>
     </section>
 
-    <section id="sec3" data-audio="splat2dlc.mp3" style="background-image: url('agent8.png');">
+    <section data-audio="song4.mp3" style="background-image: url('agent8.png');">
         <div class="lore-box border-octo">
-            <h1>Octo Expansion: Sanitização</h1>
-            <p>O terrível plano do Comandante Tartar.</p>
+            <div class="header-area"><h1>Octo Expansion: O Extermínio</h1></div>
+            <p>No Deepsea Metro, o <b>Comandante Tartar</b> revela sua face sombria. Ele é uma IA criada por um cientista humano para passar o conhecimento à próxima espécie. Ao ver os Inklings focados em moda e batalhas "fúteis", ele decidiu resetar o mundo.</p>
+            <p><b>O Processo de Sanitização:</b> Tartar tritura Octolings vivos para criar uma pasta de DNA. O <b>Agente 8</b> é o espécime número <b>10.008</b>, indicando que mais de dez mil outros foram mortos tentando alcançar a "Terra Prometida". A sanitização remove o livre arbítrio, transformando-os em cascas vazias e obedientes.</p>
         </div>
     </section>
 
-    <section id="sec4" data-audio="splat3.mp3" style="background-image: url('deepcut.png');">
+    <section data-audio="song7.mp3" style="background-image: url('deepcut.png');">
         <div class="lore-box border-s3">
-            <h1>Splatoon 3: Mr. Grizz</h1>
-            <p>O último sobrevivente da Ark Polaris.</p>
+            <div class="header-area"><h1>Splatoon 3: O Retorno dos Mamíferos</h1></div>
+            <p>O <b>Mr. Grizz</b> é o Urso #03, um sobrevivente real da <b>Ark Polaris</b>. Ele ficou vagando no espaço por milênios e, ao voltar, encontrou o planeta dominado por seres marinhos. Consumido pelo luto, ele usa os Golden Eggs para criar a <i>Fuzzy Ooze</i> (Geleia Peluda).</p>
+            <p>Seu plano era transformar toda a vida marinha de volta em mamíferos, mesmo que isso custasse a consciência de todos. Ele representa o último vestígio do egoísmo humano tentando retomar um mundo que já não lhe pertence.</p>
         </div>
     </section>
 
     <script>
         const audio = document.getElementById('main-audio');
         const info = document.getElementById('track-info');
-        const jukebox = document.getElementById('jukebox');
         const selector = document.getElementById('track-selector');
-        
-        let audioMode = 'auto'; // 'auto' ou 'manual'
-        let currentAutoTrack = "";
+        let audioMode = 'auto';
+        let currentTrack = "";
 
-        // Troca de Modo
         function setMode(mode) {
             audioMode = mode;
             document.getElementById('btn-auto').classList.toggle('active', mode === 'auto');
             document.getElementById('btn-manual').classList.toggle('active', mode === 'manual');
-            
-            if (mode === 'manual') {
-                jukebox.classList.add('show');
-                manualPlay();
-            } else {
-                jukebox.classList.remove('show');
+            if(mode === 'auto') {
+                currentTrack = ""; 
                 info.innerText = "MODO: AUTOMÁTICO";
-                currentAutoTrack = ""; // Reseta para forçar a detecção da seção atual
             }
         }
 
-        // Play Manual (Jukebox)
         function manualPlay() {
-            const track = selector.value;
-            if (audio.src.includes(track)) return;
-            audio.src = track;
-            audio.play();
-            info.innerText = "TOCANDO AGORA: " + track;
+            if (audioMode === 'manual') {
+                const track = selector.value;
+                audio.src = track;
+                audio.play();
+                info.innerText = "TOCANDO: " + track;
+            }
         }
 
-        // Play Automático (Baseado na Seção)
         const observer = new IntersectionObserver((entries) => {
             if (audioMode !== 'auto') return;
-
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const track = entry.target.getAttribute('data-audio');
-                    if (track && track !== currentAutoTrack) {
-                        currentAutoTrack = track;
+                    if (track && track !== currentTrack) {
+                        currentTrack = track;
                         audio.src = track;
-                        audio.play().catch(() => {
-                            info.innerText = "CLIQUE PARA ATIVAR O SOM";
-                        });
-                        info.innerText = "MODO AUTO: " + track;
+                        audio.play().catch(() => { info.innerText = "CLIQUE NA TELA"; });
+                        info.innerText = "AUTO PLAY: " + track;
+                        selector.value = track; // Sincroniza o seletor visualmente
                     }
                 }
             });
@@ -188,7 +164,6 @@
 
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-        // Start no primeiro clique
         window.addEventListener('click', () => {
             if (audio.paused) { audio.play().catch(e => {}); }
         }, { once: true });
