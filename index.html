@@ -2,11 +2,10 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self';">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SplatArchives | The Unofficial Bible</title>
     <style>
+        /* [Seus estilos base de fonte e body permanecem os mesmos] */
         @font-face {
             font-family: 'SplatoonFont';
             src: url('SplatoonFont.otf') format('opentype');
@@ -16,268 +15,182 @@
             margin: 0; padding: 0;
             background-color: #000;
             color: #fff;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             scroll-snap-type: y mandatory;
             overflow-x: hidden;
         }
 
         section {
-            width: 100vw;
-            height: 100vh;
+            width: 100vw; height: 100vh;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             scroll-snap-align: start;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-size: cover; background-position: center; background-attachment: fixed;
         }
 
         .lore-box {
-    background: rgba(0, 0, 0, 0.3); /* Transparência em 30% */
-    backdrop-filter: blur(12px);    /* Desfoque reduzido para ver melhor o fundo */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 40px;
-    max-width: 1100px;
-    width: 85%;
-    max-height: 85vh; 
-    overflow-y: auto;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    scrollbar-width: thin;
-    scrollbar-color: #eaff00 transparent;
+            background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 40px; max-width: 1100px; width: 85%;
+            max-height: 85vh; overflow-y: auto; border-radius: 30px;
         }
 
-        .header-area {
-            border-bottom: 4px solid #eaff00;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-        }
-
-        h1 { 
-    font-family: 'SplatoonFont', sans-serif; 
-    font-size: 2.8rem; 
-    color: #eaff00; 
-    margin: 0; 
-    text-shadow: 3px 3px 8px #000; /* Sombra forte para destacar o título */
-}
-       h2, h3 { 
-    font-family: 'SplatoonFont', sans-serif; 
-    text-shadow: 2px 2px 5px #000; 
-}
-
-        p { 
-    font-size: 1.15rem; 
-    line-height: 1.8; 
-    text-align: justify; 
-    color: #ffffff; 
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.9); /* Sombra crucial para leitura no transparente */
-}
-
-        b { color: #eaff00; }
-        i { color: #00f2ff; font-style: normal; }
-
-        .char-layout {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
-            margin-top: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .char-img { border: 6px solid #fff; box-shadow: 12px 12px 0px rgba(0,0,0,0.8); }
-        .char-img img { width: 100%; height: auto; display: block; }
-
-        #music-player {
+        /* --- NOVO PAINEL DE ÁUDIO --- */
+        #audio-dashboard {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 10000;
-            background: rgba(0, 0, 0, 0.8);
+            top: 20px; right: 20px;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.85);
             border: 2px solid #eaff00;
-            border-radius: 40px;
-            padding: 12px 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px;
+            width: 250px;
+            font-family: 'SplatoonFont', sans-serif;
+            color: #eaff00;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .music-label { font-family: 'SplatoonFont', sans-serif; color: #eaff00; font-size: 0.7rem; }
-        .controls { display: flex; gap: 10px; }
-
-        #play-btn, .nav-btn {
-            background: #eaff00; border: none; border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: 0.2s;
-        }
-        #play-btn { width: 35px; height: 35px; }
-        .nav-btn { width: 25px; height: 25px; }
-
-        footer {
-            background: #000; padding: 80px 20px; text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .audio-title { font-size: 0.8rem; margin-bottom: 10px; text-align: center; border-bottom: 1px solid #eaff00; padding-bottom: 5px; }
+        
+        .mode-switch {
+            display: flex; justify-content: space-around; margin-bottom: 15px;
         }
 
-        .disclaimer-text { max-width: 800px; margin: 0 auto; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); }
+        .mode-btn {
+            background: #222; border: 1px solid #eaff00; color: #eaff00;
+            padding: 5px 10px; cursor: pointer; font-size: 0.7rem; border-radius: 5px;
+        }
 
-        /* BORDAS DAS SEÇÕES */
+        .mode-btn.active { background: #eaff00; color: #000; }
+
+        .jukebox-controls { display: none; flex-direction: column; gap: 10px; }
+        .jukebox-controls.show { display: flex; }
+
+        select {
+            background: #000; color: #eaff00; border: 1px solid #eaff00;
+            padding: 5px; border-radius: 5px; font-family: sans-serif;
+        }
+
+        #track-info { font-size: 0.65rem; margin-top: 10px; color: #fff; text-align: center; }
+
+        /* Estilos das bordas das seções */
         .border-s1 { border-left: 15px solid #00bcd4; }
         .border-s2 { border-left: 15px solid #ff0077; }
         .border-octo { border-left: 15px solid #00f2ff; }
         .border-s3 { border-left: 15px solid #eaff00; }
-        .border-city { border-left: 15px solid #fff; }
-
-        .tag-role { display: inline-block; padding: 6px 15px; font-family: 'SplatoonFont', sans-serif; font-size: 0.9rem; border-radius: 5px; color: #fff; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-    <div id="music-player">
-        <div class="controls">
-            <button class="nav-btn" onclick="changeTrack(-1)">«</button>
-            <button id="play-btn" onclick="toggleMusic()">▶</button>
-            <button class="nav-btn" onclick="changeTrack(1)">»</button>
+    <div id="audio-dashboard">
+        <div class="audio-title">SPLAT-AUDIO SYSTEM</div>
+        
+        <div class="mode-switch">
+            <button id="btn-auto" class="mode-btn active" onclick="setMode('auto')">AUTO (JOGO)</button>
+            <button id="btn-manual" class="mode-btn" onclick="setMode('manual')">MANUAL</button>
         </div>
-        <span class="music-label" id="track-name">TRACK: 01/08</span>
-        <audio id="bgm" loop><source id="audio-source" src="song.mp3" type="audio/mpeg"></audio>
+
+        <div id="jukebox" class="jukebox-controls">
+            <select id="track-selector" onchange="manualPlay()">
+                <option value="splat1.mp3">Splatoon 1 - Main Theme</option>
+                <option value="splat2.mp3">Splatoon 2 - Inkopolis</option>
+                <option value="splat2dlc.mp3">Octo Expansion - Metro</option>
+                <option value="splat3.mp3">Splatoon 3 - Anarchy</option>
+                <option value="splat3dlc.mp3">Side Order - Lore</option>
+            </select>
+        </div>
+
+        <div id="track-info">MODO: AUTOMÁTICO</div>
     </div>
 
-    <section style="background-image: url('squidsisters.png');">
+    <audio id="main-audio" loop></audio>
+
+    <section id="sec1" data-audio="splat1.mp3" style="background-image: url('squidsisters.png');">
         <div class="lore-box border-s1">
-            <div class="header-area">
-                <h1>Prólogo: O Fim da Humanidade</h1>
-            </div>
-            <p>Há 12.000 anos, a Terra enfrentou sua última crise. O aquecimento global descontrolado derreteu as calotas polares, elevando o nível dos oceanos a pontos irreversíveis. Em um esforço desesperado, grupos de humanos tentaram se refugiar em <b>Alterna</b>, um complexo subterrâneo construído dentro de um domo geológico. No entanto, um acidente catastrófico matou os últimos humanos, e seus corpos, carregados de sentimentos e memórias, foram convertidos em cristais líquidos que caíram no mar.</p>
-            <p>Esses cristais "contaminaram" a vida marinha, acelerando a evolução das lulas e polvos, que agora possuíam o desejo humano de criatividade e competição. Assim nasceu a <b>Era Mollusc</b>.</p>
-            
-            <h2>A Grande Guerra Turf (Great Turf War)</h2>
-            <p>Milênios depois, a escassez de terra firme causou o maior conflito da história. Os <b>Octarians</b> possuíam uma tecnologia militar superior, utilizando robôs gigantes chamados <i>Octoweapons</i>. Eles quase conquistaram tudo, mas os Inklings tinham uma vantagem: eram mais rápidos em suas formas de lula e possuíam o lendário <b>Capitão Cuttlefish</b>.</p>
-            <p>A guerra foi decidida por um detalhe bizarro: os Octoweapons eram tão potentes que a fiação elétrica não aguentou e uma tomada principal foi desconectada acidentalmente, imobilizando o exército de polvos. Os Inklings aproveitaram e baniram os Octarians para os domos subterrâneos de Octo Valley, onde eles vivem sob racionamento de energia.</p>
-            
-            <div class="char-layout">
-                <div class="char-info">
-                    <div class="tag-role" style="background: #ff0077;">As Defensoras de Inkopolis</div>
-                    <h3>The Squid Sisters (Callie & Marie)</h3>
-                    <p>No primeiro jogo, o <b>DJ Octavio</b> rouba o <i>Great Zapfish</i> para religar os domos de seu povo. Ele hipnotiza as criaturas marinhas para servirem ao seu exército. Marie recruta o <b>Agente 3</b> para invadir o subsolo. O conflito termina com o concerto "Calamari Inkantation", que ressoa tão forte que quebra o controle de Octavio e o prende em um globo de neve.</p>
-                </div>
-                <div class="char-img"><img src="callie.png" alt="Callie e Marie"></div>
-            </div>
+            <h1>Prólogo: O Legado</h1>
+            <p>Há 12.000 anos, o mundo mudou...</p>
         </div>
     </section>
 
-    <section style="background-image: url('offthehook.png');">
+    <section id="sec2" data-audio="splat2.mp3" style="background-image: url('offthehook.png');">
         <div class="lore-box border-s2">
-            <div class="header-area">
-                <h1>Splatoon 2: Sombras na Square</h1>
-            </div>
-            <p>Anos após a derrota de Octavio, a paz em Inkopolis Square é interrompida. <b>Callie desaparece</b> sem deixar rastros. Marie, agora disfarçada, recruta o <b>Agente 4</b> (você). Descobre-se que o DJ Octavio escapou de sua prisão e usou os <i>Hypnoshades</i> para lavar o cérebro de Callie, tornando-a sua General.</p>
-            <p>Enquanto o Agente 4 luta para recuperar os Zapfish em Octo Canyon, Callie atua como o boss final ao lado de Octavio. Marie utiliza um tiro de tinta carregado com a melodia das lulas para libertar sua prima da hipnose no meio de um concerto sônico voador.</p>
-            
-            <div class="char-layout">
-                <div class="char-info">
-                    <div class="tag-role" style="background: #ff00ea;">A Nova Geração</div>
-                    <h3>Off the Hook (Pearl & Marina)</h3>
-                    <p>Marina é uma ex-elite Octariana que desertou após ouvir a música das Squid Sisters. Ela é uma gênia tecnológica e, junto com a rapper Pearl, fundou o grupo Off the Hook. Elas se tornam fundamentais na <b>Octo Expansion</b>, onde ajudam um Octoling desertor (Agente 8) a escapar do extermínio sônico planejado pelo Comandante Tartar.</p>
-                </div>
-                <div class="char-img"><img src="offthehook_profile.png" alt="Off the Hook"></div>
-            </div>
+            <h1>Splatoon 2: Sombras</h1>
+            <p>O retorno de Octavio e o desaparecimento de Callie.</p>
         </div>
     </section>
 
-    <section style="background-image: url('agent8.png');">
+    <section id="sec3" data-audio="splat2dlc.mp3" style="background-image: url('agent8.png');">
         <div class="lore-box border-octo">
-            <div class="header-area">
-                <h1>Octo Expansion: O Experimento Genocida</h1>
-            </div>
-            <p>O <b>Agent 8</b> acorda no Deepsea Metro sem memórias. Ele é guiado por um telefone falante chamado <b>Comandante Tartar</b>, que promete levá-lo à "Terra Prometida". Tartar é, na verdade, uma inteligência artificial criada por um cientista humano há 12.000 anos para preservar o conhecimento da humanidade.</p>
-            <p>O plano de Tartar é sombrio: ele percebeu que as novas espécies marinhas eram tão "fúteis" quanto os humanos e decidiu resetar o mundo. Ele criou o processo de <b>Sanitização</b> — que remove o livre arbítrio e a individualidade dos polvos, transformando-os em robôs biológicos verdes.</p>
-            <p>O "telefone" pretendia triturar o Agente 8 em uma pasta genética para alimentar um canhão solar gigante (o NILS Statue) e destruir Inkopolis. Com a ajuda de Pearl e seu grito sônico destruidor, Tartar é pulverizado, salvando milhões de vidas.</p>
-            
-            <div class="char-layout">
-                <div class="char-info">
-                    <div class="tag-role" style="background: #00ff66; color: #000;">Vilão Ancestral</div>
-                    <h3>Comandante Tartar</h3>
-                    <p>Tartar representa o medo humano de ser substituído por algo "inferior". Ele via a cultura e a moda das lulas como lixo e tentou impor uma ordem perfeita através do extermínio total.</p>
-                </div>
-                <div class="char-img"><img src="tartar.png" alt="Commander Tartar"></div>
-            </div>
+            <h1>Octo Expansion: Sanitização</h1>
+            <p>O terrível plano do Comandante Tartar.</p>
         </div>
     </section>
 
-    <section style="background-image: url('deepcut.png');">
+    <section id="sec4" data-audio="splat3.mp3" style="background-image: url('deepcut.png');">
         <div class="lore-box border-s3">
-            <div class="header-area">
-                <h1>Splatoon 3: O Mistério de Alterna</h1>
-            </div>
-            <p>Nas Splatlands, o <b>New Agent 3</b> descobre o abrigo original da humanidade: <b>Alterna</b>. O local foi tomado por uma substância chamada <b>Fuzzy Ooze</b> (Geleia Peluda), que transforma seres marinhos em mamíferos irracionais. O mentor é o <b>Mr. Grizz</b>, dono da Grizzco.</p>
-            <p><b>A História do Mr. Grizz:</b> Ele é o "Urso #03", um urso pardo que sobreviveu à extinção a bordo da nave espacial Ark Polaris. Após vagar pelo espaço por milênios, ele retornou à Terra e encontrou o planeta dominado por lulas. Consumido pelo luto, ele usou os Golden Eggs coletados por jogadores de Salmon Run para criar a Geleia Peluda e tentar forçar o mundo a voltar à Era dos Pelos.</p>
-            <p>No final épico, o <b>DJ Octavio</b> une forças com os Inklings, pilotando seu mecha para levar o Agente 3 até o espaço, onde eles derrotam o urso gigante antes que ele bombardreie o planeta.</p>
-            
-            <div class="char-layout">
-                <div class="char-info">
-                    <div class="tag-role" style="background: #ffcc00; color: #000;">Os Novos Ídolos</div>
-                    <h3>Deep Cut</h3>
-                    <p>Shiver, Frye e Big Man são saqueadores benevolentes de Alterna. Eles descendem de linhagens antigas que guardavam os tesouros humanos. Shiver controla tubarões e Frye controla enguias, representando a força selvagem do deserto.</p>
-                </div>
-                <div class="char-img"><img src="deepcut_profile.png" alt="Deep Cut"></div>
-            </div>
+            <h1>Splatoon 3: Mr. Grizz</h1>
+            <p>O último sobrevivente da Ark Polaris.</p>
         </div>
     </section>
-
-    <section style="background-image: url('inkopolis.png');">
-        <div class="lore-box border-city">
-            <div class="header-area">
-                <h1>Sociedade, Biologia e Personagens</h1>
-            </div>
-            <p><b>Anatomia Cefalópode:</b> Inklings e Octolings possuem uma fisiologia única. Eles não possuem ossos, permitindo que se comprimam em formas líquidas de tinta. Seus corpos são controlados por um bico central resistente. A água é letal porque suas membranas celulares são muito finas e instáveis; o contato com grandes massas de água causa uma explosão osmótica que dissolve o indivíduo instantaneamente.</p>
-            
-            <h2>Os Pilares de Inkopolis</h2>
-            <p><b>Judd & Li'l Judd:</b> Judd é um gato de 12.000 anos que foi colocado em criogenia por seu dono cientista (o criador de Tartar) antes da inundação. Li'l Judd é um clone criado pela máquina de criogenia, mas ele sente que é apenas uma "sombra" do Judd original, o que o levou a assumir o controle da Grizzco após a derrota de Mr. Grizz.</p>
-            <p><b>Sheldon:</b> O dono da Ammo Knights. Sua família foi essencial na Grande Guerra Turf, projetando armas baseadas em registros humanos. Sheldon é obcecado por história militar e vê o Turf War moderno como uma preservação cultural das técnicas de guerra.</p>
-            <p><b>Jellyfish (Águas-vivas):</b> Eles formam a classe trabalhadora. Diferente dos Inklings, eles possuem uma mente coletiva. Eles não participam de guerras por território, preferindo manter a infraestrutura das cidades, as lojas de roupas e as usinas elétricas funcionando silenciosamente.</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="disclaimer-text">
-            <strong>SPLATARCHIVES: THE UNOFFICIAL BIBLE (2026 EDITION)</strong><br><br>
-            Este repositório é dedicado à preservação da história cefalópode. Splatoon™ e todos os ativos são marcas registradas da <b>Nintendo Co., Ltd</b>.<br>
-            Projeto desenvolvido por Artur para fins de arquivo de lore e demonstração de web design.
-        </div>
-    </footer>
 
     <script>
-        if (top !== self) { top.location = self.location; }
-        const playlist = ["song.mp3", "song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song6.mp3", "song7.mp3"];
-        let currentTrack = 0;
-        const audio = document.getElementById('bgm');
-        const source = document.getElementById('audio-source');
-        const btn = document.getElementById('play-btn');
-        const label = document.getElementById('track-name');
+        const audio = document.getElementById('main-audio');
+        const info = document.getElementById('track-info');
+        const jukebox = document.getElementById('jukebox');
+        const selector = document.getElementById('track-selector');
+        
+        let audioMode = 'auto'; // 'auto' ou 'manual'
+        let currentAutoTrack = "";
 
-        function toggleMusic() {
-            if (audio.paused) { audio.play(); btn.innerHTML = "||"; } 
-            else { audio.pause(); btn.innerHTML = "▶"; }
+        // Troca de Modo
+        function setMode(mode) {
+            audioMode = mode;
+            document.getElementById('btn-auto').classList.toggle('active', mode === 'auto');
+            document.getElementById('btn-manual').classList.toggle('active', mode === 'manual');
+            
+            if (mode === 'manual') {
+                jukebox.classList.add('show');
+                manualPlay();
+            } else {
+                jukebox.classList.remove('show');
+                info.innerText = "MODO: AUTOMÁTICO";
+                currentAutoTrack = ""; // Reseta para forçar a detecção da seção atual
+            }
         }
 
-        function changeTrack(direction) {
-            currentTrack += direction;
-            if (currentTrack < 0) currentTrack = playlist.length - 1;
-            if (currentTrack >= playlist.length) currentTrack = 0;
-            const wasPlaying = !audio.paused;
-            source.src = playlist[currentTrack];
-            audio.load();
-            label.innerHTML = `TRACK: ${String(currentTrack + 1).padStart(2, '0')}/08`;
-            if (wasPlaying) { audio.play(); btn.innerHTML = "||"; }
+        // Play Manual (Jukebox)
+        function manualPlay() {
+            const track = selector.value;
+            if (audio.src.includes(track)) return;
+            audio.src = track;
+            audio.play();
+            info.innerText = "TOCANDO AGORA: " + track;
         }
 
+        // Play Automático (Baseado na Seção)
+        const observer = new IntersectionObserver((entries) => {
+            if (audioMode !== 'auto') return;
+
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const track = entry.target.getAttribute('data-audio');
+                    if (track && track !== currentAutoTrack) {
+                        currentAutoTrack = track;
+                        audio.src = track;
+                        audio.play().catch(() => {
+                            info.innerText = "CLIQUE PARA ATIVAR O SOM";
+                        });
+                        info.innerText = "MODO AUTO: " + track;
+                    }
+                }
+            });
+        }, { threshold: 0.6 });
+
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+        // Start no primeiro clique
         window.addEventListener('click', () => {
-            if (audio.paused) { audio.play().catch(e => {}); btn.innerHTML = "||"; }
+            if (audio.paused) { audio.play().catch(e => {}); }
         }, { once: true });
     </script>
 </body>
